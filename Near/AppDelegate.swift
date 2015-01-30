@@ -43,6 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(application: UIApplication!, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings!) {
+        if (notificationSettings.types ==  UIUserNotificationType.Alert) {
+            Places.setupInitialPlaceNotifications()
+        }
+        else{
+            println("User didn't give permissions to show notifications")
+        }
+        
+        // inspect notificationSettings to see what the user said!
+    }
 
 
 
