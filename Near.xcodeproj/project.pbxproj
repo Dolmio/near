@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0696A423D62526F715264880 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CC2D64CBE8E7AB1022656A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		117918571A8131EA0087C660 /* logo_splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 117918561A8131EA0087C660 /* logo_splashscreen.png */; };
 		6D5555AC1A77EBDB002B2206 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5555AB1A77EBDB002B2206 /* MapKit.framework */; };
 		6D5555AE1A77ECD5002B2206 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5555AD1A77ECD5002B2206 /* CoreLocation.framework */; };
 		6F17C03E14BE2F648228C521 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F17CF37C3E4AFF5021EB28E /* LaunchScreen.xib */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		117918561A8131EA0087C660 /* logo_splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_splashscreen.png; sourceTree = "<group>"; };
 		626666605C9031CB62AC6534 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6D5555AB1A77EBDB002B2206 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6D5555AD1A77ECD5002B2206 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -97,6 +99,7 @@
 		6F17C251C388DAE95430F64E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				117918561A8131EA0087C660 /* logo_splashscreen.png */,
 				6F17CF99F3294BB4383B07D3 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -245,6 +248,7 @@
 				6F17C03E14BE2F648228C521 /* LaunchScreen.xib in Resources */,
 				6F17CB677505E9C9AE5F8C22 /* Main.storyboard in Resources */,
 				AFB8C1EB1A7BD108006DB57D /* skiffer-liuskaluoto.gpx in Resources */,
+				117918571A8131EA0087C660 /* logo_splashscreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
