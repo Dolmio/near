@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jB5-Z6-ecy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -25,6 +32,118 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="569" y="107"/>
+        </scene>
+        <!--Introduction View Controller-->
+        <scene sceneID="j1N-fh-cex">
+            <objects>
+                <viewController id="jB5-Z6-ecy" customClass="IntroductionViewController" customModule="Near" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vyR-iC-nyN"/>
+                        <viewControllerLayoutGuide type="bottom" id="YDR-Sz-4fU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H2A-Qf-yjA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh-Hi!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6u-Th-1sg">
+                                <rect key="frame" x="275" y="67" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="sAF-ir-Vht"/>
+                                    <constraint firstAttribute="height" constant="21" id="sob-s2-34B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <color key="textColor" red="0.098039224743843079" green="0.098039224743843079" blue="0.098039224743843079" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQg-RR-Ufz">
+                                <rect key="frame" x="125" y="88" width="350" height="244"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="27P-hn-ETv"/>
+                                    <constraint firstAttribute="width" secondItem="XQg-RR-Ufz" secondAttribute="height" multiplier="115:193" id="jRj-KM-l8B"/>
+                                </constraints>
+                                <string key="text">I am antisocial service.
+No account and no sharing.
+
+I will let you know what it is near to you. Places, history, secrets and nature's beauty.
+
+You don't have to use me.
+Just live your life and
+I will do the rest.
+
+I currently operate only in Helsinki.
+ </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.40000003576278687" green="0.40000003576278687" blue="0.40000003576278687" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="jRj-KM-l8B"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qs2-AT-7od">
+                                <rect key="frame" x="205" y="500" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="2VE-aI-2zb"/>
+                                    <constraint firstAttribute="height" constant="50" id="lBv-Lx-RME"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <state key="normal" title="GET STARTED">
+                                    <color key="titleColor" red="0.07494791666666667" green="0.07494791666666667" blue="0.07494791666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="show" id="PGq-jM-hu7"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="lai-Ev-ohe">
+                                <rect key="frame" x="281" y="13" width="39" height="37"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="currentPageIndicatorTintColor">
+                                        <color key="value" red="0.96078437566757202" green="0.7450980544090271" blue="0.31372550129890442" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pageIndicatorTintColor">
+                                        <color key="value" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294123888015747" green="0.95294123888015747" blue="0.95294123888015747" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="XQg-RR-Ufz" secondAttribute="centerX" id="8RR-Gu-7aQ"/>
+                            <constraint firstAttribute="centerX" secondItem="A6u-Th-1sg" secondAttribute="centerX" id="C2Q-CT-5NK"/>
+                            <constraint firstAttribute="centerX" secondItem="qs2-AT-7od" secondAttribute="centerX" id="Hwd-N2-yIU"/>
+                            <constraint firstItem="XQg-RR-Ufz" firstAttribute="top" secondItem="A6u-Th-1sg" secondAttribute="bottom" id="Jrz-Nr-R7g"/>
+                            <constraint firstAttribute="centerX" secondItem="XQg-RR-Ufz" secondAttribute="centerX" id="j4X-GH-NrK"/>
+                            <constraint firstAttribute="centerX" secondItem="lai-Ev-ohe" secondAttribute="centerX" id="mH6-hV-8VU"/>
+                            <constraint firstAttribute="centerX" secondItem="XQg-RR-Ufz" secondAttribute="centerX" id="qfW-iS-9Ig"/>
+                            <constraint firstItem="A6u-Th-1sg" firstAttribute="top" secondItem="vyR-iC-nyN" secondAttribute="bottom" constant="47" id="sRX-VY-hg3"/>
+                            <constraint firstItem="YDR-Sz-4fU" firstAttribute="top" secondItem="qs2-AT-7od" secondAttribute="bottom" constant="50" id="uwY-mG-flS"/>
+                            <constraint firstItem="A6u-Th-1sg" firstAttribute="top" secondItem="lai-Ev-ohe" secondAttribute="bottom" constant="17" id="wEa-YJ-3A5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="j4X-GH-NrK"/>
+                                <exclude reference="qfW-iS-9Ig"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="getStartedButton" destination="qs2-AT-7od" id="f98-dT-k4i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yvl-gD-VlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-124" y="107"/>
         </scene>
     </scenes>
 </document>

@@ -17,6 +17,12 @@
 		6F17C59209C3D42EA3FD0F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F17C2287DD61C1FC467C9C6 /* AppDelegate.swift */; };
 		6F17C6DD9F1A616B739C4A8B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F17CAC93073951E270EAD6E /* Images.xcassets */; };
 		6F17CB677505E9C9AE5F8C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F17C5159976F8E3EDDE4D9C /* Main.storyboard */; };
+		AF9748A41A9D05ED00ACBD79 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF9748A31A9D05ED00ACBD79 /* Roboto-Regular.ttf */; };
+		AF9748A51A9D05ED00ACBD79 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF9748A31A9D05ED00ACBD79 /* Roboto-Regular.ttf */; };
+		AF9748B01A9D120300ACBD79 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9748AF1A9D120300ACBD79 /* IntroductionViewController.swift */; };
+		AF9748B11A9D120300ACBD79 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9748AF1A9D120300ACBD79 /* IntroductionViewController.swift */; };
+		AF9748B31A9D223D00ACBD79 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9748B21A9D223D00ACBD79 /* Colors.swift */; };
+		AF9748B41A9D223D00ACBD79 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9748B21A9D223D00ACBD79 /* Colors.swift */; };
 		AFB8C1E91A7BD0FA006DB57D /* cafe-regatta.gpx in Resources */ = {isa = PBXBuildFile; fileRef = AFB8C1E81A7BD0FA006DB57D /* cafe-regatta.gpx */; };
 		AFB8C1EB1A7BD108006DB57D /* skiffer-liuskaluoto.gpx in Resources */ = {isa = PBXBuildFile; fileRef = AFB8C1EA1A7BD108006DB57D /* skiffer-liuskaluoto.gpx */; };
 		AFB8C1ED1A7BD112006DB57D /* teurastamo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = AFB8C1EC1A7BD112006DB57D /* teurastamo.gpx */; };
@@ -49,6 +55,9 @@
 		6F17CAC93073951E270EAD6E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6F17CBA0D437CBF1F7E1B83F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6F17CF99F3294BB4383B07D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		AF9748A31A9D05ED00ACBD79 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		AF9748AF1A9D120300ACBD79 /* IntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
+		AF9748B21A9D223D00ACBD79 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AFB8C1E81A7BD0FA006DB57D /* cafe-regatta.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "cafe-regatta.gpx"; sourceTree = "<group>"; };
 		AFB8C1EA1A7BD108006DB57D /* skiffer-liuskaluoto.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "skiffer-liuskaluoto.gpx"; sourceTree = "<group>"; };
 		AFB8C1EC1A7BD112006DB57D /* teurastamo.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = teurastamo.gpx; sourceTree = "<group>"; };
@@ -99,6 +108,7 @@
 		6F17C251C388DAE95430F64E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AF9748A31A9D05ED00ACBD79 /* Roboto-Regular.ttf */,
 				117918561A8131EA0087C660 /* logo_splashscreen.png */,
 				6F17CF99F3294BB4383B07D3 /* Info.plist */,
 			);
@@ -134,6 +144,7 @@
 		6F17C8F935BC97BE9C9D2883 /* Near */ = {
 			isa = PBXGroup;
 			children = (
+				AF9748AF1A9D120300ACBD79 /* IntroductionViewController.swift */,
 				6F17C251C388DAE95430F64E /* Supporting Files */,
 				6F17CAC93073951E270EAD6E /* Images.xcassets */,
 				6F17CF37C3E4AFF5021EB28E /* LaunchScreen.xib */,
@@ -141,6 +152,7 @@
 				6F17C2287DD61C1FC467C9C6 /* AppDelegate.swift */,
 				6F17C5159976F8E3EDDE4D9C /* Main.storyboard */,
 				6F17CBA0D437CBF1F7E1B83F /* ViewController.swift */,
+				AF9748B21A9D223D00ACBD79 /* Colors.swift */,
 			);
 			path = Near;
 			sourceTree = "<group>";
@@ -234,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9748A51A9D05ED00ACBD79 /* Roboto-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +260,7 @@
 				AFB8C1ED1A7BD112006DB57D /* teurastamo.gpx in Resources */,
 				6F17C03E14BE2F648228C521 /* LaunchScreen.xib in Resources */,
 				6F17CB677505E9C9AE5F8C22 /* Main.storyboard in Resources */,
+				AF9748A41A9D05ED00ACBD79 /* Roboto-Regular.ttf in Resources */,
 				AFB8C1EB1A7BD108006DB57D /* skiffer-liuskaluoto.gpx in Resources */,
 				117918571A8131EA0087C660 /* logo_splashscreen.png in Resources */,
 			);
@@ -307,6 +321,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9748B01A9D120300ACBD79 /* IntroductionViewController.swift in Sources */,
+				AF9748B31A9D223D00ACBD79 /* Colors.swift in Sources */,
 				6F17C59209C3D42EA3FD0F33 /* AppDelegate.swift in Sources */,
 				6F17C41A0BBD11E2F0306F9D /* ViewController.swift in Sources */,
 				AFF16E731A7BC8E800EFF6AE /* Places.swift in Sources */,
@@ -317,6 +333,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9748B11A9D120300ACBD79 /* IntroductionViewController.swift in Sources */,
+				AF9748B41A9D223D00ACBD79 /* Colors.swift in Sources */,
 				6F17C333A76752B38F5D2A71 /* NearTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Near.app/Near";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -362,6 +381,8 @@
 				INFOPLIST_FILE = NearTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -371,9 +392,12 @@
 			baseConfigurationReference = 626666605C9031CB62AC6534 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Near/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -381,6 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Near.app/Near";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -388,6 +413,7 @@
 				INFOPLIST_FILE = NearTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
@@ -439,9 +465,11 @@
 			baseConfigurationReference = DC9AC305BA16C6EA8D60A2EF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Near/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 			};
 			name = Release;
 		};
