@@ -16,11 +16,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         
-        //Before accepting permission to show notifications this code is run while the permission dialog is visible to the user
-        let currentNotificationPermissions = UIApplication.sharedApplication().currentUserNotificationSettings()
-        if(currentNotificationPermissions.types == UIUserNotificationType.Alert) {
-                Places.setupInitialPlaceNotifications()
-        }
     }
     
     override func didReceiveMemoryWarning() {
