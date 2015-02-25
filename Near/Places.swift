@@ -44,20 +44,42 @@ struct Places{
             let coords = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
             notification.region = CLCircularRegion(center: coords, radius: place.radius, identifier: place.name)
             notification.regionTriggersOnce = false
+
+            notification.userInfo = ["place": self.placeToDictionary(place)];
             return notification
         })
     }
-    
+
     static func registerNotifications(notifications:[UILocalNotification]) {
         let sharedApplication = UIApplication.sharedApplication()
         for (placeNotification: UILocalNotification) in notifications{
             sharedApplication.scheduleLocalNotification(placeNotification)
         }
+        println("registered \(notifications.count) notifications");
     }
     
     static func setupInitialPlaceNotifications() {
         let notifications = notificationsForPlaces(initialPlaces())
         registerNotifications(notifications)
+    }
+
+    static func placeToDictionary(place:Place) -> Dictionary<String, AnyObject> {
+        return [
+            "name": place.name,
+            "longitude" : place.longitude,
+            "description" : place.description,
+            "category" : place.category,
+            "radius" : place.radius,
+            "latitude": place.latitude,]
+    }
+
+    static func dictionaryToPlace(dic: Dictionary<String, AnyObject>) -> Place{
+        return Place(name: dic["name"] as String,
+                category: dic["category"] as String,
+                latitude: dic["latitude"] as Double,
+                longitude: dic["longitude"] as Double,
+                description: dic["description"] as String,
+                radius: dic["radius"] as Double)
     }
 }
 

@@ -17,7 +17,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Near" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapView" id="vXZ-lx-hvc" customClass="ViewController" customModule="Near" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -79,6 +79,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="mapElement" destination="SGg-tU-MAq" id="Obg-DV-jWW"/>
+                        <outlet property="placeDescription" destination="wmj-AD-teP" id="Lkj-yY-f1l"/>
+                        <outlet property="placeTitle" destination="SEw-x7-oP5" id="lAt-bS-XMX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
