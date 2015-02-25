@@ -3,9 +3,12 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
         </mutableArray>
@@ -23,16 +26,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGg-tU-MAq">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGg-tU-MAq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="470"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orion Movie Theatre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEw-x7-oP5">
+                                <rect key="frame" x="60" y="500" width="155" height="20"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_map_listview.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZTY-dW-m0A">
+                                <rect key="frame" x="30" y="500" width="20" height="15"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old art deco theater which now shows old classic movies." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmj-AD-teP">
+                                <rect key="frame" x="60" y="511" width="243" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="243" id="xbB-Ca-iAw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <color key="textColor" red="0.38431376218795776" green="0.38039219379425049" blue="0.37647062540054321" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.95294123888015747" green="0.95294123888015747" blue="0.95294123888015747" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="SGg-tU-MAq" firstAttribute="top" secondItem="wmj-AD-teP" secondAttribute="top" id="0jN-6E-ZsS"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="130" id="67C-9x-ESG"/>
+                            <constraint firstItem="SGg-tU-MAq" firstAttribute="top" secondItem="SEw-x7-oP5" secondAttribute="top" constant="-500" id="7yM-1U-oik"/>
+                            <constraint firstItem="SGg-tU-MAq" firstAttribute="top" secondItem="ZTY-dW-m0A" secondAttribute="top" constant="-500" id="AfU-oQ-FBp"/>
+                            <constraint firstAttribute="centerX" secondItem="SGg-tU-MAq" secondAttribute="centerX" id="HVI-ae-C5H"/>
+                            <constraint firstItem="wmj-AD-teP" firstAttribute="top" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="41" id="Hkt-c6-OOk"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ZTY-dW-m0A" secondAttribute="bottom" constant="85" id="Krl-Ri-FXW"/>
+                            <constraint firstItem="SGg-tU-MAq" firstAttribute="leading" secondItem="ZTY-dW-m0A" secondAttribute="trailing" constant="-16" id="MdP-4B-1CU"/>
+                            <constraint firstItem="ZTY-dW-m0A" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="14" id="SRW-12-JyC"/>
+                            <constraint firstItem="SGg-tU-MAq" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="USd-Uc-00s"/>
+                            <constraint firstItem="ZTY-dW-m0A" firstAttribute="top" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="30" id="UjZ-rN-qBe"/>
+                            <constraint firstItem="SEw-x7-oP5" firstAttribute="leading" secondItem="ZTY-dW-m0A" secondAttribute="trailing" constant="10" id="aX4-By-6XA"/>
+                            <constraint firstItem="wmj-AD-teP" firstAttribute="leading" secondItem="SEw-x7-oP5" secondAttribute="leading" id="b8C-q6-Vcr"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="wmj-AD-teP" secondAttribute="bottom" constant="25" id="cDa-s4-UaV"/>
+                            <constraint firstItem="SEw-x7-oP5" firstAttribute="top" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="30" id="d1o-Gt-cQW"/>
+                            <constraint firstItem="SGg-tU-MAq" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="ffX-82-jAw"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="130" id="jaI-rI-Orb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SGg-tU-MAq" secondAttribute="trailing" constant="-16" id="vCn-cc-BdF"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0jN-6E-ZsS"/>
+                                <exclude reference="7yM-1U-oik"/>
+                                <exclude reference="AfU-oQ-FBp"/>
+                                <exclude reference="MdP-4B-1CU"/>
+                                <exclude reference="jaI-rI-Orb"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="569" y="107"/>
+            <point key="canvasLocation" x="570" y="96"/>
         </scene>
         <!--Introduction View Controller-->
         <scene sceneID="j1N-fh-cex">
@@ -146,4 +196,7 @@ I currently operate only in Helsinki.
             <point key="canvasLocation" x="-124" y="107"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_map_listview.png" width="20" height="28"/>
+    </resources>
 </document>
