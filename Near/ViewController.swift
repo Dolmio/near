@@ -15,7 +15,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Ask for permission for notifications
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        
+
         // Ask for permission for location
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -51,27 +51,61 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let placeAnnotation = MKPointAnnotation();
         placeAnnotation.setCoordinate(placeLocation);
         placeAnnotation.title = "place";
-
         mapElement.addAnnotation(placeAnnotation);
+
+        let placeCircle = PlaceCircle(centerCoordinate: placeLocation, radius: place.radius);
+        mapElement.addOverlay(placeCircle);
+
+        if let userLocation = locationManager.location {
+            let userLocationCircle = UserLocationCircle(centerCoordinate: userLocation.coordinate, radius: 50);
+             mapElement.addOverlay(userLocationCircle);
+        }
     }
 
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!{
+        let width = 32;
+        let height = 40;
         if(annotation.title == "place") {
-            return annotationViewWithImage("icon_map.png");
+            return annotationViewWithImage("icon_map.png", width: width, height: height);
 
         }
         else if (annotation is MKUserLocation) {
-            return annotationViewWithImage("icon_map_arrow.png");
+            return annotationViewWithImage("icon_map_arrow.png", width: width, height: height);
         }
         else{
             return MKPinAnnotationView();
         }
     }
 
-    func annotationViewWithImage(named: String) -> MKAnnotationView {
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        switch overlay {
+        case is PlaceCircle:
+            return createCircleWithOpacity(overlay, opacity: 0.2);
+        case is UserLocationCircle:
+            return createCircleWithOpacity(overlay, opacity: 0.3);
+        default: return nil;
+        }
+    }
+
+    func createCircleWithOpacity(overlay: MKOverlay, opacity: CGFloat) -> MKCircleRenderer {
+        let circle = MKCircleRenderer(overlay: overlay);
+        circle.fillColor = Colors.yellowMapRadiusColor;
+        circle.alpha = opacity;
+        return circle;
+    }
+
+    func annotationViewWithImage(named: String, width: Int, height: Int) -> MKAnnotationView {
         let annotationView = MKAnnotationView();
-        annotationView.image = UIImage(named: named);
+        let imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: width, height: height));
+        imageView.image = UIImage(named: named);
+        let frame = imageView.frame;
+        annotationView.frame = frame;
+        imageView.frame = frame;
+        annotationView.addSubview(imageView);
         return annotationView;
     }
+
+    class PlaceCircle:MKCircle{}
+    class UserLocationCircle:MKCircle{}
 
 }
