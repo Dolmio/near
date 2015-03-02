@@ -56,8 +56,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        println("Received local notification when application state was: \(application.applicationState.rawValue)");
-        NSNotificationCenter.defaultCenter().postNotificationName("refreshMapView", object: nil, userInfo: notification.userInfo);
+        println("Received local notification when application state was: \(getApplicationStateString(application.applicationState))");
+        if(application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background){
+            NSNotificationCenter.defaultCenter().postNotificationName("refreshMapView", object: nil, userInfo: notification.userInfo);
+        }
+
+    }
+
+    func getApplicationStateString(state: UIApplicationState) -> String{
+        switch(state) {
+        case UIApplicationState.Active: return "Active";
+        case UIApplicationState.Background: return "Background";
+        case UIApplicationState.Inactive: return "Inactive";
+        default: return "Unknown";
+        }
     }
 
 
