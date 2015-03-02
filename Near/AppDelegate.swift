@@ -55,6 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // inspect notificationSettings to see what the user said!
     }
 
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        println("Received local notification when application state was: \(application.applicationState.rawValue)");
+        NSNotificationCenter.defaultCenter().postNotificationName("refreshMapView", object: nil, userInfo: notification.userInfo);
+    }
+
 
 
 
