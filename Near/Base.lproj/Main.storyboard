@@ -39,7 +39,7 @@
                                 <rect key="frame" x="30" y="500" width="20" height="15"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old art deco theater which now shows old classic movies." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmj-AD-teP">
-                                <rect key="frame" x="60" y="511" width="243" height="64"/>
+                                <rect key="frame" x="60" y="522" width="243" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="243" id="xbB-Ca-iAw"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                             <constraint firstItem="SGg-tU-MAq" firstAttribute="top" secondItem="SEw-x7-oP5" secondAttribute="top" constant="-500" id="7yM-1U-oik"/>
                             <constraint firstItem="SGg-tU-MAq" firstAttribute="top" secondItem="ZTY-dW-m0A" secondAttribute="top" constant="-500" id="AfU-oQ-FBp"/>
                             <constraint firstAttribute="centerX" secondItem="SGg-tU-MAq" secondAttribute="centerX" id="HVI-ae-C5H"/>
-                            <constraint firstItem="wmj-AD-teP" firstAttribute="top" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="41" id="Hkt-c6-OOk"/>
+                            <constraint firstItem="wmj-AD-teP" firstAttribute="top" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="52" id="Hkt-c6-OOk"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ZTY-dW-m0A" secondAttribute="bottom" constant="85" id="Krl-Ri-FXW"/>
                             <constraint firstItem="SGg-tU-MAq" firstAttribute="leading" secondItem="ZTY-dW-m0A" secondAttribute="trailing" constant="-16" id="MdP-4B-1CU"/>
                             <constraint firstItem="ZTY-dW-m0A" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="14" id="SRW-12-JyC"/>
@@ -63,11 +63,11 @@
                             <constraint firstItem="ZTY-dW-m0A" firstAttribute="top" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="30" id="UjZ-rN-qBe"/>
                             <constraint firstItem="SEw-x7-oP5" firstAttribute="leading" secondItem="ZTY-dW-m0A" secondAttribute="trailing" constant="10" id="aX4-By-6XA"/>
                             <constraint firstItem="wmj-AD-teP" firstAttribute="leading" secondItem="SEw-x7-oP5" secondAttribute="leading" id="b8C-q6-Vcr"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="wmj-AD-teP" secondAttribute="bottom" constant="25" id="cDa-s4-UaV"/>
                             <constraint firstItem="SEw-x7-oP5" firstAttribute="top" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="30" id="d1o-Gt-cQW"/>
                             <constraint firstItem="SGg-tU-MAq" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="ffX-82-jAw"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="SGg-tU-MAq" secondAttribute="bottom" constant="130" id="jaI-rI-Orb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SGg-tU-MAq" secondAttribute="trailing" constant="-16" id="vCn-cc-BdF"/>
+                            <constraint firstItem="SEw-x7-oP5" firstAttribute="leading" secondItem="wmj-AD-teP" secondAttribute="leading" id="x7b-w2-NCS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
