@@ -60,6 +60,7 @@ struct Places{
     
     static func setupInitialPlaceNotifications() {
         let notifications = notificationsForPlaces(initialPlaces())
+        UIApplication.sharedApplication().cancelAllLocalNotifications();
         registerNotifications(notifications)
     }
 
