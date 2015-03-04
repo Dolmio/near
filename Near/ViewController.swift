@@ -1,14 +1,27 @@
 import UIKit
 import MapKit
 import CoreLocation
-
+import Darwin
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIApplicationDelegate{
-    
+
     @IBOutlet weak var mapElement: MKMapView!
     @IBOutlet weak var placeTitle: UILabel!
     @IBOutlet weak var placeDescription: UILabel!
     let locationManager = CLLocationManager()
+
+    let userLocationArrowView : MKAnnotationView;
+    let placeIconView : MKAnnotationView
+
+    required init(coder aDecoder: NSCoder) {
+        let mapIconWidth = 32;
+        let  mapIconHeight = 40;
+        userLocationArrowView = ViewControllerHelpers.annotationViewWithImage("icon_map_arrow.png", width: mapIconWidth, height: mapIconHeight);
+        placeIconView = ViewControllerHelpers.annotationViewWithImage("icon_map.png", width: mapIconWidth, height: mapIconHeight);
+
+        super.init(coder: aDecoder);
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +35,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshViewWithPlace:", name:"refreshMapView", object: nil);
         mapElement.delegate = self;
+        if(CLLocationManager.headingAvailable()){
+            locationManager.startUpdatingHeading();
+        }
 
     }
     
@@ -82,14 +98,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
 
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!{
-        let width = 32;
-        let height = 40;
         if(annotation.title == "place") {
-            return annotationViewWithImage("icon_map.png", width: width, height: height);
+            return placeIconView;
 
         }
         else if (annotation is MKUserLocation) {
-            return annotationViewWithImage("icon_map_arrow.png", width: width, height: height);
+            return userLocationArrowView;
         }
         else{
             return MKPinAnnotationView();
@@ -113,7 +127,18 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         return circle;
     }
 
-    func annotationViewWithImage(named: String, width: Int, height: Int) -> MKAnnotationView {
+    func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!){
+        ViewControllerHelpers.rotateViewToDegrees(userLocationArrowView, degrees: newHeading.trueHeading);
+    }
+
+    class PlaceCircle:MKCircle{}
+    class UserLocationCircle:MKCircle{}
+
+}
+
+struct ViewControllerHelpers {
+
+    static func annotationViewWithImage(named: String, width: Int, height: Int) -> MKAnnotationView {
         let annotationView = MKAnnotationView();
         let imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: width, height: height));
         imageView.image = UIImage(named: named);
@@ -124,7 +149,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         return annotationView;
     }
 
-    class PlaceCircle:MKCircle{}
-    class UserLocationCircle:MKCircle{}
+    static func rotateViewToDegrees(view:UIView, degrees: Double) {
+        let radians = degreesToRadians(degrees);
+        view.transform = CGAffineTransformMakeRotation(CGFloat(radians));
+    }
+
+    static func degreesToRadians(degrees: Double) -> Double {
+        return degrees / 360.0 * 2 * M_PI;
+    }
 
 }
