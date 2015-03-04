@@ -43,6 +43,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
 
     func refreshMap(place:Place) {
+        resetPlaces();
         let placeLocation = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude);
         let spanInDegrees = 0.005;
         let viewRegion = MKCoordinateRegionMake(placeLocation, MKCoordinateSpanMake(spanInDegrees,spanInDegrees));
@@ -59,6 +60,24 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if let userLocation = locationManager.location {
             let userLocationCircle = UserLocationCircle(centerCoordinate: userLocation.coordinate, radius: 50);
              mapElement.addOverlay(userLocationCircle);
+        }
+    }
+
+    func resetPlaces() {
+        if let annotations = mapElement.annotations {
+            for(annotation : MKAnnotation) in annotations as [MKAnnotation]{
+                if(annotation.title == "place") {
+                    mapElement.removeAnnotation(annotation);
+                }
+            }
+        }
+
+        if let overlays = mapElement.overlays? {
+            for(overlay: MKOverlay) in overlays as [MKOverlay] {
+                if(overlay is PlaceCircle) {
+                    mapElement.removeOverlay(overlay);
+                }
+            }
         }
     }
 
