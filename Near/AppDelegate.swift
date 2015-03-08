@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else{
             println("User didn't give permissions to show notifications")
         }
+        NSNotificationCenter.defaultCenter().postNotificationName("notificationSettingsRegistered", object: nil);
         
         // inspect notificationSettings to see what the user said!
     }

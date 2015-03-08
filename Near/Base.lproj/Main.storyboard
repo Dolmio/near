@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jB5-Z6-ecy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -7,6 +7,10 @@
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -83,16 +87,17 @@
                         <outlet property="mapElement" destination="SGg-tU-MAq" id="Obg-DV-jWW"/>
                         <outlet property="placeDescription" destination="wmj-AD-teP" id="Lkj-yY-f1l"/>
                         <outlet property="placeTitle" destination="SEw-x7-oP5" id="lAt-bS-XMX"/>
+                        <segue destination="jB5-Z6-ecy" kind="show" identifier="toIntroduction" id="jrK-r8-enN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="570" y="96"/>
+            <point key="canvasLocation" x="787" y="-89"/>
         </scene>
-        <!--Introduction View Controller-->
+        <!--View Controller-->
         <scene sceneID="j1N-fh-cex">
             <objects>
-                <viewController id="jB5-Z6-ecy" customClass="IntroductionViewController" customModule="Near" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jB5-Z6-ecy" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vyR-iC-nyN"/>
                         <viewControllerLayoutGuide type="bottom" id="YDR-Sz-4fU"/>
@@ -137,7 +142,18 @@ I currently operate only in Helsinki.
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qs2-AT-7od">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="lai-Ev-ohe">
+                                <rect key="frame" x="281" y="13" width="39" height="37"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="currentPageIndicatorTintColor">
+                                        <color key="value" red="0.96078437566757202" green="0.7450980544090271" blue="0.31372550129890442" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pageIndicatorTintColor">
+                                        <color key="value" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qs2-AT-7od" customClass="YellowButton" customModule="Near" customModuleProvider="target">
                                 <rect key="frame" x="205" y="500" width="190" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="2VE-aI-2zb"/>
@@ -157,20 +173,9 @@ I currently operate only in Helsinki.
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="show" id="PGq-jM-hu7"/>
+                                    <segue destination="gfg-f0-Een" kind="custom" customClass="IntroductionSegue" customModule="Near" customModuleProvider="target" id="jhP-gt-Avo"/>
                                 </connections>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="lai-Ev-ohe">
-                                <rect key="frame" x="281" y="13" width="39" height="37"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="currentPageIndicatorTintColor">
-                                        <color key="value" red="0.96078437566757202" green="0.7450980544090271" blue="0.31372550129890442" alpha="1" colorSpace="deviceRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="pageIndicatorTintColor">
-                                        <color key="value" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="deviceRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.95294123888015747" green="0.95294123888015747" blue="0.95294123888015747" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -192,13 +197,210 @@ I currently operate only in Helsinki.
                             </mask>
                         </variation>
                     </view>
-                    <connections>
-                        <outlet property="getStartedButton" destination="qs2-AT-7od" id="f98-dT-k4i"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yvl-gD-VlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-124" y="107"/>
+            <point key="canvasLocation" x="71" y="777"/>
+        </scene>
+        <!--Notification Permission View Controller-->
+        <scene sceneID="XXh-pN-2Dw">
+            <objects>
+                <viewController id="p1p-pW-94d" customClass="NotificationPermissionViewController" customModule="Near" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7oN-7W-mfR"/>
+                        <viewControllerLayoutGuide type="bottom" id="ta1-qi-fpd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rDq-2m-X3b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By giving me permissions to send you notifications, I will let you know if there is something interesting near you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCM-Hi-qvL">
+                                <rect key="frame" x="125" y="88" width="350" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yCM-Hi-qvL" secondAttribute="height" multiplier="115:193" id="1mK-Ac-6aF"/>
+                                    <constraint firstAttribute="width" constant="350" id="5UT-MW-b2f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.40000003579999999" green="0.40000003579999999" blue="0.40000003579999999" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1mK-Ac-6aF"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBN-oy-swh" customClass="YellowButton" customModule="Near" customModuleProvider="target">
+                                <rect key="frame" x="205" y="500" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="TsJ-I1-YHq"/>
+                                    <constraint firstAttribute="height" constant="50" id="unV-en-igF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" red="0.074947916670000003" green="0.074947916670000003" blue="0.074947916670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="askNotificationPermissions:" destination="p1p-pW-94d" eventType="touchUpInside" id="RtN-9Q-a1B"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="auz-aN-LVl">
+                                <rect key="frame" x="281" y="13" width="39" height="37"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="currentPageIndicatorTintColor">
+                                        <color key="value" red="0.96078437569999997" green="0.74509805439999999" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pageIndicatorTintColor">
+                                        <color key="value" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't need to worry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQ1-c1-lQR">
+                                <rect key="frame" x="216" y="67" width="170" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="5Xw-3p-5jr"/>
+                                    <constraint firstAttribute="height" constant="21" id="LiT-fl-cWv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <color key="textColor" red="0.09803922474" green="0.09803922474" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="ta1-qi-fpd" firstAttribute="top" secondItem="LBN-oy-swh" secondAttribute="bottom" constant="50" id="4Cq-tY-ZEY"/>
+                            <constraint firstAttribute="centerX" secondItem="yCM-Hi-qvL" secondAttribute="centerX" id="COM-j3-AvJ"/>
+                            <constraint firstAttribute="centerX" secondItem="LBN-oy-swh" secondAttribute="centerX" id="Dip-O8-kb5"/>
+                            <constraint firstItem="yCM-Hi-qvL" firstAttribute="top" secondItem="lQ1-c1-lQR" secondAttribute="bottom" id="Fxe-eC-Kpf"/>
+                            <constraint firstAttribute="centerX" secondItem="yCM-Hi-qvL" secondAttribute="centerX" id="LhK-0U-zpw"/>
+                            <constraint firstItem="lQ1-c1-lQR" firstAttribute="top" secondItem="auz-aN-LVl" secondAttribute="bottom" constant="17" id="TLT-b6-rHw"/>
+                            <constraint firstAttribute="centerX" secondItem="lQ1-c1-lQR" secondAttribute="centerX" constant="-1" id="ZP2-ee-dO5"/>
+                            <constraint firstItem="lQ1-c1-lQR" firstAttribute="top" secondItem="7oN-7W-mfR" secondAttribute="bottom" constant="47" id="dkR-1J-FR5"/>
+                            <constraint firstAttribute="centerX" secondItem="yCM-Hi-qvL" secondAttribute="centerX" id="emS-vU-DEP"/>
+                            <constraint firstAttribute="centerX" secondItem="auz-aN-LVl" secondAttribute="centerX" id="o7m-9g-qlV"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="COM-j3-AvJ"/>
+                                <exclude reference="emS-vU-DEP"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="custom" identifier="toMain" customClass="IntroductionSegue" customModule="Near" customModuleProvider="target" id="b1O-1M-Ibm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MtA-z1-Kle" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457" y="777"/>
+        </scene>
+        <!--Location Permission View Controller-->
+        <scene sceneID="0go-Jm-j7R">
+            <objects>
+                <viewController id="gfg-f0-Een" customClass="LocationPermissionViewController" customModule="Near" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MR7-Zo-iT2"/>
+                        <viewControllerLayoutGuide type="bottom" id="ygz-Lb-NFN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4x1-lj-o8r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="So how this works?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2c-XR-iBQ">
+                                <rect key="frame" x="231" y="67" width="139" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="2zP-Zq-85Y"/>
+                                    <constraint firstAttribute="height" constant="21" id="riU-mB-yB1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <color key="textColor" red="0.09803922474" green="0.09803922474" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For me to be able to give the best tips and insight of your surroundings, I need your location." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qci-zB-iiZ">
+                                <rect key="frame" x="125" y="88" width="350" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="HZJ-UO-Mcw"/>
+                                    <constraint firstAttribute="width" secondItem="Qci-zB-iiZ" secondAttribute="height" multiplier="115:193" id="RbB-Ob-3Lx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.40000003579999999" green="0.40000003579999999" blue="0.40000003579999999" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="RbB-Ob-3Lx"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qmp-We-VNA">
+                                <rect key="frame" x="281" y="13" width="39" height="37"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="currentPageIndicatorTintColor">
+                                        <color key="value" red="0.96078437569999997" green="0.74509805439999999" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pageIndicatorTintColor">
+                                        <color key="value" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynL-ng-yHC" customClass="YellowButton" customModule="Near" customModuleProvider="target">
+                                <rect key="frame" x="205" y="500" width="190" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="PPA-nb-Ygr"/>
+                                    <constraint firstAttribute="height" constant="50" id="YCW-1R-1Fi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" red="0.074947916670000003" green="0.074947916670000003" blue="0.074947916670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="askLocationPermissions:" destination="gfg-f0-Een" eventType="touchUpInside" id="uv4-9c-2uv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="b2c-XR-iBQ" firstAttribute="top" secondItem="MR7-Zo-iT2" secondAttribute="bottom" constant="47" id="1Wn-4x-Y3D"/>
+                            <constraint firstAttribute="centerX" secondItem="Qci-zB-iiZ" secondAttribute="centerX" id="AOE-8q-FJB"/>
+                            <constraint firstAttribute="centerX" secondItem="Qmp-We-VNA" secondAttribute="centerX" id="I3a-rT-8fb"/>
+                            <constraint firstItem="ygz-Lb-NFN" firstAttribute="top" secondItem="ynL-ng-yHC" secondAttribute="bottom" constant="50" id="MQ4-ka-9ba"/>
+                            <constraint firstAttribute="centerX" secondItem="Qci-zB-iiZ" secondAttribute="centerX" id="c7p-xU-3ZL"/>
+                            <constraint firstAttribute="centerX" secondItem="b2c-XR-iBQ" secondAttribute="centerX" id="cbx-3u-bvK"/>
+                            <constraint firstItem="Qci-zB-iiZ" firstAttribute="top" secondItem="b2c-XR-iBQ" secondAttribute="bottom" id="hvR-8c-66r"/>
+                            <constraint firstAttribute="centerX" secondItem="ynL-ng-yHC" secondAttribute="centerX" id="ki3-pw-f52"/>
+                            <constraint firstItem="b2c-XR-iBQ" firstAttribute="top" secondItem="Qmp-We-VNA" secondAttribute="bottom" constant="17" id="mEC-2U-6Ev"/>
+                            <constraint firstAttribute="centerX" secondItem="Qci-zB-iiZ" secondAttribute="centerX" id="wZH-ev-5Qw"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AOE-8q-FJB"/>
+                                <exclude reference="c7p-xU-3ZL"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <segue destination="p1p-pW-94d" kind="custom" identifier="toNotificationPermissions" customClass="IntroductionSegue" customModule="Near" customModuleProvider="target" id="55k-Q2-e6C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rPg-wr-Vrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="787" y="772"/>
         </scene>
     </scenes>
     <resources>
