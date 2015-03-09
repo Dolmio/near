@@ -10,16 +10,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var placeDescription: UILabel!
     let locationManager = CLLocationManager()
 
-    let userLocationArrowView : MKAnnotationView;
+    let userLocationArrowView : MKAnnotationView
     let placeIconView : MKAnnotationView
 
     required init(coder aDecoder: NSCoder) {
-        let mapIconWidth = 32;
-        let  mapIconHeight = 40;
-        userLocationArrowView = ViewControllerHelpers.annotationViewWithImage("icon_map_arrow.png", width: mapIconWidth, height: mapIconHeight);
-        placeIconView = ViewControllerHelpers.annotationViewWithImage("icon_map.png", width: mapIconWidth, height: mapIconHeight);
+        let mapIconWidth = 32
+        let  mapIconHeight = 40
+        userLocationArrowView = ViewControllerHelpers.annotationViewWithImage("icon_map_arrow.png", width: mapIconWidth, height: mapIconHeight)
+        placeIconView = ViewControllerHelpers.annotationViewWithImage("icon_map.png", width: mapIconWidth, height: mapIconHeight)
 
-        super.init(coder: aDecoder);
+        super.init(coder: aDecoder)
     }
 
 
@@ -34,9 +34,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.requestAlwaysAuthorization()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshViewWithPlace:", name:"refreshMapView", object: nil);
-        mapElement.delegate = self;
+        mapElement.delegate = self
         if(CLLocationManager.headingAvailable()){
-            locationManager.startUpdatingHeading();
+            locationManager.startUpdatingHeading()
         }
 
     }
@@ -50,10 +50,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if let placeDic = notification.userInfo?["place"] as? Dictionary<String, AnyObject> {
 
             let place = Places.dictionaryToPlace(placeDic);
-            refreshMap(place);
+            refreshMap(place)
 
-            placeTitle.text = place.name;
-            placeDescription.text = place.description;
+            placeTitle.text = place.name
+            placeDescription.text = place.description
         }
 
     }
@@ -64,19 +64,19 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let mapSizeToRadiusMultiplier = 1.5
         let mapSize = mapSizeToRadiusMultiplier * place.radius * 2
         let mapRegionToShow = MKCoordinateRegionMakeWithDistance(placeLocation, mapSize, mapSize)
-        mapElement.setRegion(mapElement.regionThatFits(mapRegionToShow), animated: true);
+        mapElement.setRegion(mapElement.regionThatFits(mapRegionToShow), animated: true)
 
-        let placeAnnotation = MKPointAnnotation();
-        placeAnnotation.setCoordinate(placeLocation);
-        placeAnnotation.title = "place";
-        mapElement.addAnnotation(placeAnnotation);
+        let placeAnnotation = MKPointAnnotation()
+        placeAnnotation.setCoordinate(placeLocation)
+        placeAnnotation.title = "place"
+        mapElement.addAnnotation(placeAnnotation)
 
-        let placeCircle = PlaceCircle(centerCoordinate: placeLocation, radius: place.radius);
-        mapElement.addOverlay(placeCircle);
+        let placeCircle = PlaceCircle(centerCoordinate: placeLocation, radius: place.radius)
+        mapElement.addOverlay(placeCircle)
 
         if let userLocation = locationManager.location {
-            let userLocationCircle = UserLocationCircle(centerCoordinate: userLocation.coordinate, radius: 50);
-             mapElement.addOverlay(userLocationCircle);
+            let userLocationCircle = UserLocationCircle(centerCoordinate: userLocation.coordinate, radius: 50)
+             mapElement.addOverlay(userLocationCircle)
         }
     }
 
@@ -84,7 +84,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if let annotations = mapElement.annotations {
             for(annotation : MKAnnotation) in annotations as [MKAnnotation]{
                 if(annotation.title == "place") {
-                    mapElement.removeAnnotation(annotation);
+                    mapElement.removeAnnotation(annotation)
                 }
             }
         }
@@ -92,7 +92,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if let overlays = mapElement.overlays? {
             for(overlay: MKOverlay) in overlays as [MKOverlay] {
                 if(overlay is PlaceCircle) {
-                    mapElement.removeOverlay(overlay);
+                    mapElement.removeOverlay(overlay)
                 }
             }
         }
@@ -100,36 +100,36 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!{
         if(annotation.title == "place") {
-            return placeIconView;
+            return placeIconView
 
         }
         else if (annotation is MKUserLocation) {
-            return userLocationArrowView;
+            return userLocationArrowView
         }
         else{
-            return MKPinAnnotationView();
+            return MKPinAnnotationView()
         }
     }
 
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         switch overlay {
         case is PlaceCircle:
-            return createCircleWithOpacity(overlay, opacity: 0.2);
+            return createCircleWithOpacity(overlay, opacity: 0.2)
         case is UserLocationCircle:
-            return createCircleWithOpacity(overlay, opacity: 0.3);
-        default: return nil;
+            return createCircleWithOpacity(overlay, opacity: 0.3)
+        default: return nil
         }
     }
 
     func createCircleWithOpacity(overlay: MKOverlay, opacity: CGFloat) -> MKCircleRenderer {
-        let circle = MKCircleRenderer(overlay: overlay);
-        circle.fillColor = Colors.yellowMapRadiusColor;
-        circle.alpha = opacity;
-        return circle;
+        let circle = MKCircleRenderer(overlay: overlay)
+        circle.fillColor = Colors.yellowMapRadiusColor
+        circle.alpha = opacity
+        return circle
     }
 
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!){
-        ViewControllerHelpers.rotateViewToDegrees(userLocationArrowView, degrees: newHeading.trueHeading);
+        ViewControllerHelpers.rotateViewToDegrees(userLocationArrowView, degrees: newHeading.trueHeading)
     }
 
     class PlaceCircle:MKCircle{}
@@ -140,23 +140,23 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 struct ViewControllerHelpers {
 
     static func annotationViewWithImage(named: String, width: Int, height: Int) -> MKAnnotationView {
-        let annotationView = MKAnnotationView();
-        let imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: width, height: height));
-        imageView.image = UIImage(named: named);
-        let frame = imageView.frame;
-        annotationView.frame = frame;
-        imageView.frame = frame;
-        annotationView.addSubview(imageView);
-        return annotationView;
+        let annotationView = MKAnnotationView()
+        let imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: width, height: height))
+        imageView.image = UIImage(named: named)
+        let frame = imageView.frame
+        annotationView.frame = frame
+        imageView.frame = frame
+        annotationView.addSubview(imageView)
+        return annotationView
     }
 
     static func rotateViewToDegrees(view:UIView, degrees: Double) {
-        let radians = degreesToRadians(degrees);
-        view.transform = CGAffineTransformMakeRotation(CGFloat(radians));
+        let radians = degreesToRadians(degrees)
+        view.transform = CGAffineTransformMakeRotation(CGFloat(radians))
     }
 
     static func degreesToRadians(degrees: Double) -> Double {
-        return degrees / 360.0 * 2 * M_PI;
+        return degrees / 360.0 * 2 * M_PI
     }
 
 }
