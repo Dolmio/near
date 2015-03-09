@@ -15,11 +15,11 @@ class NotificationPermissionViewController: UIViewController, UIApplicationDeleg
     }
 
     func notificationsRegistered(notification: NSNotification) {
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userHasSeenIntroduction")
         performSegue()
     }
 
     private func performSegue() {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userHasSeenIntroduction")
         performSegueWithIdentifier("toMain", sender: self)
     }
 }
