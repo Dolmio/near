@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7525" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7516"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -100,42 +100,65 @@
         <scene sceneID="9fN-6P-kUQ">
             <objects>
                 <tableViewController id="Tnx-FT-tBo" customClass="HistoryTableViewController" customModule="Near" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="48c-Mw-o2Q">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="193" sectionHeaderHeight="22" sectionFooterHeight="22" id="48c-Mw-o2Q">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.81960784313725488" green="0.81960784313725488" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_header_ver2.png" id="ju9-3m-KRs">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
-                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyItem" textLabel="ujq-Ck-Pyj" detailTextLabel="UJT-VC-0WG" imageView="qec-wh-oep" rowHeight="122" style="IBUITableViewCellStyleSubtitle" id="Wec-hK-Nak">
+                            <tableViewCell opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="193" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="193" id="Wec-hK-Nak" customClass="HistoryTableViewCell" customModule="Near" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wec-hK-Nak" id="6go-4U-uoA">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="250" tableViewCell="Wec-hK-Nak" id="6go-4U-uoA">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Orion Movie Theatre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ujq-Ck-Pyj">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_map_listview_ver2.png" translatesAutoresizingMaskIntoConstraints="NO" id="KwU-9b-kOq" userLabel="Place Icon">
+                                            <rect key="frame" x="30" y="25" width="10" height="57"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="10" id="pYZ-Lv-u8K"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="57" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WDL-ss-StB" userLabel="Place Header Label">
+                                            <rect key="frame" x="50" y="25" width="500" height="57"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="200" constant="20" id="nEG-oK-hTa"/>
+                                            </constraints>
+                                            <string key="text">HEADER Lorem Ipsum tote bag Truffaut master cleanse, Helvetica try-hard sustainable normcore Lorem Ipsum tote bag Truffaut master cleanse, Helvetica try-hard sustainable normcore</string>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                             <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UJT-VC-0WG">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <string key="text">Craft beer synth small batch, artisan meggings Kickstarter normcore fingerstache. McSweeney's next level gentrify synth roof party, swag freegan. Semiotics Brooklyn brunch narwhal, Marfa hella quinoa 8-bit organic Godard hashtag Williamsburg mlkshk. </string>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="500" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="104" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRN-Sr-pig" userLabel="Place Description Label">
+                                            <rect key="frame" x="50" y="85" width="500" height="82"/>
+                                            <string key="text">DESCRIPTION Lorem Ipsum tote bag Truffaut master cleanse, Helvetica try-hard sustainable normcore. Authentic Carles Truffaut, crucifix Pitchfork cronut you probably haven't heard of them squid swag Schlitz gluten-free. Farm-to-table freegan chia artisan, church-key cray gastropub sartorial tousled pickled Williamsburg. Disrupt cornhole banjo, 90's pour-over food truck meh flannel. Mlkshk raw denim aesthetic fixie Wes Anderson, hoodie 3 wolf moon roof party pour-over. </string>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_map_listview_ver2.png" id="qec-wh-oep">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="WDL-ss-StB" firstAttribute="top" secondItem="6go-4U-uoA" secondAttribute="top" constant="25" id="4GX-hl-pRI"/>
+                                        <constraint firstItem="KwU-9b-kOq" firstAttribute="height" secondItem="WDL-ss-StB" secondAttribute="height" priority="750" id="G3T-JL-FAX"/>
+                                        <constraint firstItem="SRN-Sr-pig" firstAttribute="top" secondItem="WDL-ss-StB" secondAttribute="bottom" constant="3" id="KXV-9a-EQe"/>
+                                        <constraint firstItem="KwU-9b-kOq" firstAttribute="top" secondItem="6go-4U-uoA" secondAttribute="top" constant="25" id="RJU-fl-44g"/>
+                                        <constraint firstAttribute="trailing" secondItem="WDL-ss-StB" secondAttribute="trailing" constant="50" id="W9n-LP-LnU"/>
+                                        <constraint firstItem="SRN-Sr-pig" firstAttribute="leading" secondItem="6go-4U-uoA" secondAttribute="leading" constant="50" id="XUX-yC-NBq"/>
+                                        <constraint firstItem="WDL-ss-StB" firstAttribute="leading" secondItem="KwU-9b-kOq" secondAttribute="trailing" constant="10" id="c4e-ym-hem"/>
+                                        <constraint firstAttribute="bottom" secondItem="SRN-Sr-pig" secondAttribute="bottom" constant="25" id="i8A-Id-D3T"/>
+                                        <constraint firstItem="KwU-9b-kOq" firstAttribute="leading" secondItem="6go-4U-uoA" secondAttribute="leading" constant="30" id="iy9-go-JcV"/>
+                                        <constraint firstAttribute="trailing" secondItem="SRN-Sr-pig" secondAttribute="trailing" constant="50" id="kDs-Ch-Qex"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JDf-WD-8gz">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JDf-WD-8gz" id="8t8-G6-liL">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="placeDescription" destination="SRN-Sr-pig" id="lQd-tT-d5z"/>
+                                    <outlet property="placeName" destination="WDL-ss-StB" id="8EU-eL-Aw8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -464,6 +487,7 @@ I currently operate only in Helsinki.
         </scene>
     </scenes>
     <resources>
+        <image name="Logo_header_ver2.png" width="47" height="11"/>
         <image name="icon_map_listview.png" width="20" height="28"/>
         <image name="icon_map_listview_ver2.png" width="10" height="14"/>
     </resources>

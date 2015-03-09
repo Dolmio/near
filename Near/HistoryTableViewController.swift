@@ -12,6 +12,8 @@ class HistoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -36,24 +38,34 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 3
+        return Storyboard.demoPlaces.count
+    }
+
+    private struct Storyboard {
+        static let cellReuseIdentifier = "HistoryCell"
+
+        // DEMO CONTENT:
+        static let demoPlaces = [
+            Place(name: "Eka paikka on tosi pitkä nimeltään, joten sen ehkä pitäisi rivittyä silleen kivasti!", category: "kategoria 1", latitude: 0.0, longitude: 0.0, description: "Tähän tulee myös paikan kuvaus.", radius: 0.0),
+            Place(name: "Paikka 2", category: "kategoria 1", latitude: 0.0, longitude: 0.0, description: "Tähän paikan kuvaus", radius: 0.0),
+            Place(name: "Tämä yksi on tosi pitkä teksti, joten sen ehkä pitäisi rivittyä silleen kivasti!", category: "kategoria 2", latitude: 0.0, longitude: 0.0, description: "Craft beer synth small batch, artisan meggings Kickstarter normcore fingerstache. McSweeney's next level gentrify synth roof party, swag freegan. Semiotics Brooklyn brunch narwhal, Marfa hella quinoa 8-bit organic Godard hashtag Williamsburg mlkshk.", radius: 0.0),
+            Place(name: "Yksirivinen otsikko", category: "kategoria 1", latitude: 0.0, longitude: 0.0, description: "Tähän pitkä paikan kuvaus... Craft beer synth small batch, artisan meggings Kickstarter normcore fingerstache. McSweeney's next level gentrify synth roof party, swag freegan. Semiotics Brooklyn brunch narwhal, Marfa hella quinoa 8-bit organic Godard hashtag Williamsburg mlkshk.", radius: 0.0),
+
+        ]
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("historyItem", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellReuseIdentifier, forIndexPath: indexPath) as HistoryTableViewCell
 
+        // DEMO CONTENT
         switch (indexPath.row) {
-        case 0:
-            cell.textLabel?.text = "nolla"
-            cell.detailTextLabel?.text = "aaa"
-        case 1:
-            cell.textLabel?.text = "yksi"
-            cell.detailTextLabel?.text = "bee"
+        case 0..<Storyboard.demoPlaces.count:
+            cell.place = Storyboard.demoPlaces[indexPath.row]
         default:
-            cell.textLabel?.text = "jotain"
-            cell.detailTextLabel?.text = "cee"
+            cell.place = nil
         }
-        
+
+        cell.tweakSizeAccordingToTable(tableView)
         return cell
     }
 
