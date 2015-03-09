@@ -116,10 +116,10 @@
                                 <color key="textColor" red="0.098039224743843079" green="0.098039224743843079" blue="0.098039224743843079" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQg-RR-Ufz">
-                                <rect key="frame" x="125" y="88" width="350" height="244"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQg-RR-Ufz">
+                                <rect key="frame" x="132" y="88" width="337" height="244"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="27P-hn-ETv"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="350" id="27P-hn-ETv"/>
                                     <constraint firstAttribute="width" secondItem="XQg-RR-Ufz" secondAttribute="height" multiplier="115:193" id="jRj-KM-l8B"/>
                                 </constraints>
                                 <string key="text">I am antisocial service.
@@ -179,10 +179,12 @@ I currently operate only in Helsinki.
                         </subviews>
                         <color key="backgroundColor" red="0.95294123888015747" green="0.95294123888015747" blue="0.95294123888015747" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="XQg-RR-Ufz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2A-Qf-yjA" secondAttribute="leadingMargin" constant="10" id="36d-a7-mmr"/>
                             <constraint firstAttribute="centerX" secondItem="XQg-RR-Ufz" secondAttribute="centerX" id="8RR-Gu-7aQ"/>
                             <constraint firstAttribute="centerX" secondItem="A6u-Th-1sg" secondAttribute="centerX" id="C2Q-CT-5NK"/>
                             <constraint firstAttribute="centerX" secondItem="qs2-AT-7od" secondAttribute="centerX" id="Hwd-N2-yIU"/>
                             <constraint firstItem="XQg-RR-Ufz" firstAttribute="top" secondItem="A6u-Th-1sg" secondAttribute="bottom" id="Jrz-Nr-R7g"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="XQg-RR-Ufz" secondAttribute="trailing" constant="10" id="SAm-se-RXN"/>
                             <constraint firstAttribute="centerX" secondItem="XQg-RR-Ufz" secondAttribute="centerX" id="j4X-GH-NrK"/>
                             <constraint firstAttribute="centerX" secondItem="lai-Ev-ohe" secondAttribute="centerX" id="mH6-hV-8VU"/>
                             <constraint firstAttribute="centerX" secondItem="XQg-RR-Ufz" secondAttribute="centerX" id="qfW-iS-9Ig"/>
@@ -214,11 +216,11 @@ I currently operate only in Helsinki.
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By giving me permissions to send you notifications, I will let you know if there is something interesting near you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCM-Hi-qvL">
-                                <rect key="frame" x="125" y="88" width="350" height="61"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By giving me permissions to send you notifications, I will let you know if there is something interesting near you." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCM-Hi-qvL">
+                                <rect key="frame" x="141" y="88" width="318" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yCM-Hi-qvL" secondAttribute="height" multiplier="115:193" id="1mK-Ac-6aF"/>
-                                    <constraint firstAttribute="width" constant="350" id="5UT-MW-b2f"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="350" id="5UT-MW-b2f"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.40000003579999999" green="0.40000003579999999" blue="0.40000003579999999" alpha="1" colorSpace="deviceRGB"/>
@@ -282,9 +284,11 @@ I currently operate only in Helsinki.
                             <constraint firstItem="yCM-Hi-qvL" firstAttribute="top" secondItem="lQ1-c1-lQR" secondAttribute="bottom" id="Fxe-eC-Kpf"/>
                             <constraint firstAttribute="centerX" secondItem="yCM-Hi-qvL" secondAttribute="centerX" id="LhK-0U-zpw"/>
                             <constraint firstItem="lQ1-c1-lQR" firstAttribute="top" secondItem="auz-aN-LVl" secondAttribute="bottom" constant="17" id="TLT-b6-rHw"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="yCM-Hi-qvL" secondAttribute="trailing" constant="10" id="UFd-2G-5i5"/>
                             <constraint firstAttribute="centerX" secondItem="lQ1-c1-lQR" secondAttribute="centerX" constant="-1" id="ZP2-ee-dO5"/>
                             <constraint firstItem="lQ1-c1-lQR" firstAttribute="top" secondItem="7oN-7W-mfR" secondAttribute="bottom" constant="47" id="dkR-1J-FR5"/>
                             <constraint firstAttribute="centerX" secondItem="yCM-Hi-qvL" secondAttribute="centerX" id="emS-vU-DEP"/>
+                            <constraint firstItem="yCM-Hi-qvL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rDq-2m-X3b" secondAttribute="leadingMargin" constant="10" id="hTQ-dH-vRK"/>
                             <constraint firstAttribute="centerX" secondItem="auz-aN-LVl" secondAttribute="centerX" id="o7m-9g-qlV"/>
                         </constraints>
                         <variation key="default">
@@ -324,10 +328,10 @@ I currently operate only in Helsinki.
                                 <color key="textColor" red="0.09803922474" green="0.09803922474" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For me to be able to give the best tips and insight of your surroundings, I need your location." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qci-zB-iiZ">
-                                <rect key="frame" x="125" y="88" width="350" height="61"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For me to be able to give the best tips and insight of your surroundings, I need your location." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qci-zB-iiZ">
+                                <rect key="frame" x="135" y="88" width="330" height="61"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="HZJ-UO-Mcw"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="350" id="HZJ-UO-Mcw"/>
                                     <constraint firstAttribute="width" secondItem="Qci-zB-iiZ" secondAttribute="height" multiplier="115:193" id="RbB-Ob-3Lx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -380,11 +384,13 @@ I currently operate only in Helsinki.
                             <constraint firstAttribute="centerX" secondItem="Qci-zB-iiZ" secondAttribute="centerX" id="AOE-8q-FJB"/>
                             <constraint firstAttribute="centerX" secondItem="Qmp-We-VNA" secondAttribute="centerX" id="I3a-rT-8fb"/>
                             <constraint firstItem="ygz-Lb-NFN" firstAttribute="top" secondItem="ynL-ng-yHC" secondAttribute="bottom" constant="50" id="MQ4-ka-9ba"/>
+                            <constraint firstItem="Qci-zB-iiZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4x1-lj-o8r" secondAttribute="leadingMargin" constant="10" id="YP6-kt-tgP"/>
                             <constraint firstAttribute="centerX" secondItem="Qci-zB-iiZ" secondAttribute="centerX" id="c7p-xU-3ZL"/>
                             <constraint firstAttribute="centerX" secondItem="b2c-XR-iBQ" secondAttribute="centerX" id="cbx-3u-bvK"/>
                             <constraint firstItem="Qci-zB-iiZ" firstAttribute="top" secondItem="b2c-XR-iBQ" secondAttribute="bottom" id="hvR-8c-66r"/>
                             <constraint firstAttribute="centerX" secondItem="ynL-ng-yHC" secondAttribute="centerX" id="ki3-pw-f52"/>
                             <constraint firstItem="b2c-XR-iBQ" firstAttribute="top" secondItem="Qmp-We-VNA" secondAttribute="bottom" constant="17" id="mEC-2U-6Ev"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Qci-zB-iiZ" secondAttribute="trailing" constant="10" id="ogc-Dh-za3"/>
                             <constraint firstAttribute="centerX" secondItem="Qci-zB-iiZ" secondAttribute="centerX" id="wZH-ev-5Qw"/>
                         </constraints>
                         <variation key="default">
