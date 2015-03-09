@@ -42,7 +42,10 @@ struct Places{
             let notification = UILocalNotification()
             notification.alertBody = "You're near \(place.name)"
             let coords = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
-            notification.region = CLCircularRegion(center: coords, radius: place.radius, identifier: place.name)
+            let region = CLCircularRegion(center: coords, radius: place.radius, identifier: place.name)
+            region.notifyOnEntry = true
+            region.notifyOnExit = false
+            notification.region = region
             notification.regionTriggersOnce = false
 
             notification.userInfo = ["place": self.placeToDictionary(place)];
