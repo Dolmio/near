@@ -24,20 +24,18 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Ask for permission for notifications
-        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
 
-        // Ask for permission for location
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshViewWithPlace:", name:"refreshMapView", object: nil);
         mapElement.delegate = self
         if(CLLocationManager.headingAvailable()){
             locationManager.startUpdatingHeading()
         }
+    }
 
+    override func viewDidAppear(animated: Bool) {
+        if (!NSUserDefaults.standardUserDefaults().boolForKey("userHasSeenIntroduction")) {
+            performSegueWithIdentifier("toIntroduction", sender: self)
+        }
     }
     
     override func didReceiveMemoryWarning() {
