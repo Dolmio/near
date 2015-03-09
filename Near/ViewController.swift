@@ -10,16 +10,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var placeDescription: UILabel!
     let locationManager = CLLocationManager()
 
-    let userLocationArrowView : MKAnnotationView
-    let placeIconView : MKAnnotationView
+    let userLocationArrowView : MKAnnotationView!
+    let placeIconView : MKAnnotationView!
 
     required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         let mapIconWidth = 32
         let  mapIconHeight = 40
-        userLocationArrowView = ViewControllerHelpers.annotationViewWithImage("icon_map_arrow.png", width: mapIconWidth, height: mapIconHeight)
-        placeIconView = ViewControllerHelpers.annotationViewWithImage("icon_map.png", width: mapIconWidth, height: mapIconHeight)
-
-        super.init(coder: aDecoder)
+        userLocationArrowView = annotationViewWithImage("icon_map_arrow.png", width: mapIconWidth, height: mapIconHeight)
+        placeIconView = annotationViewWithImage("icon_map.png", width: mapIconWidth, height: mapIconHeight)
     }
 
 
@@ -129,17 +128,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
 
     func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!){
-        ViewControllerHelpers.rotateViewToDegrees(userLocationArrowView, degrees: newHeading.trueHeading)
+        rotateViewToDegrees(userLocationArrowView, degrees: newHeading.trueHeading)
     }
 
-    class PlaceCircle:MKCircle{}
-    class UserLocationCircle:MKCircle{}
-
-}
-
-struct ViewControllerHelpers {
-
-    static func annotationViewWithImage(named: String, width: Int, height: Int) -> MKAnnotationView {
+    func annotationViewWithImage(named: String, width: Int, height: Int) -> MKAnnotationView {
         let annotationView = MKAnnotationView()
         let imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: width, height: height))
         imageView.image = UIImage(named: named)
@@ -150,13 +142,18 @@ struct ViewControllerHelpers {
         return annotationView
     }
 
-    static func rotateViewToDegrees(view:UIView, degrees: Double) {
+    func rotateViewToDegrees(view:UIView, degrees: Double) {
         let radians = degreesToRadians(degrees)
         view.transform = CGAffineTransformMakeRotation(CGFloat(radians))
     }
 
-    static func degreesToRadians(degrees: Double) -> Double {
+    func degreesToRadians(degrees: Double) -> Double {
         return degrees / 360.0 * 2 * M_PI
     }
 
+
+    class PlaceCircle:MKCircle{}
+    class UserLocationCircle:MKCircle{}
+
 }
+
