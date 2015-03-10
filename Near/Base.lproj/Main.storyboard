@@ -17,6 +17,7 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -105,11 +106,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.81960784313725488" green="0.81960784313725488" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_header_ver2.png" id="ju9-3m-KRs">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Ufb-fe-c9d" userLabel="Header Subview">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_header_ver2.png" translatesAutoresizingMaskIntoConstraints="NO" id="dk6-yK-Wyg">
+                                    <rect key="frame" x="0.0" y="22" width="600" height="11"/>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="dk6-yK-Wyg" firstAttribute="leading" secondItem="Ufb-fe-c9d" secondAttribute="leading" id="0C7-Yl-xQf"/>
+                                <constraint firstAttribute="bottom" secondItem="dk6-yK-Wyg" secondAttribute="bottom" constant="5" id="QYO-ja-rYC"/>
+                                <constraint firstAttribute="trailing" secondItem="dk6-yK-Wyg" secondAttribute="trailing" id="Szu-tW-wfo"/>
+                                <constraint firstItem="dk6-yK-Wyg" firstAttribute="top" secondItem="Ufb-fe-c9d" secondAttribute="top" constant="22" id="hQT-0a-r2j"/>
+                            </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="214" id="d0s-rX-kWk" userLabel="Footer Subview">
+                            <rect key="frame" x="0.0" y="253" width="600" height="214"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="169" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-wA-VBP">
+                                    <rect key="frame" x="50" y="25" width="500" height="169"/>
+                                    <string key="text">Great!
+You are done. Just close me and hit the streets. I will let you know if there's something interesting near you.
+
+You can use me near
+Berlin
+Helsinki
+London
+San Francisco</string>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="hWh-wA-VBP" firstAttribute="leading" secondItem="d0s-rX-kWk" secondAttribute="leading" constant="50" id="9wO-d8-9ej"/>
+                                <constraint firstItem="hWh-wA-VBP" firstAttribute="top" secondItem="d0s-rX-kWk" secondAttribute="top" constant="25" id="WyN-kX-LVn"/>
+                                <constraint firstAttribute="bottom" secondItem="hWh-wA-VBP" secondAttribute="bottom" priority="250" constant="25" id="sAK-Cf-uFP"/>
+                                <constraint firstAttribute="trailing" secondItem="hWh-wA-VBP" secondAttribute="trailing" constant="50" id="tKx-Aw-HJA"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="193" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="193" id="Wec-hK-Nak" customClass="HistoryTableViewCell" customModule="Near" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -154,7 +193,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="separatorInset" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
                                 <connections>
                                     <outlet property="placeDescription" destination="SRN-Sr-pig" id="lQd-tT-d5z"/>
                                     <outlet property="placeName" destination="WDL-ss-StB" id="8EU-eL-Aw8"/>
