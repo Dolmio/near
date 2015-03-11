@@ -1,5 +1,5 @@
 import Foundation
-import SwiftyJSON
+import UIKit
 import CoreLocation
 
 struct Places{
@@ -7,36 +7,44 @@ struct Places{
         let path = NSBundle.mainBundle().pathForResource("sample-places-helsinki", ofType: "json")
         let bundle = NSBundle.mainBundle();
         let placeInfoJSONString = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)!
-        let json = JSON(data: placeInfoJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!);
+        let jsonArray = NSJSONSerialization.JSONObjectWithData(placeInfoJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
         
         var places: [Place] = []
-        for (index: String, placeJson: JSON) in json {
-            let coordinates = placeJson["Coordinates"].string!.componentsSeparatedByString(", ")
-            let longitudeStr: String? = coordinates.count > 1 ? coordinates[1] : nil
-            let name = placeJson["Title"].string
-            let category = placeJson["Category"].string
-            let description = placeJson["Discription"].string
-            let radius = placeJson["Radius"].string
-            switch (name, category, description, radius, longitudeStr){
-                case (.Some(_), .Some(_), .Some(_), .Some(_), .Some(_)):
-                
-                let place = Place(
-                    name: name!,
-                    category: category!,
-                    latitude: (coordinates[0] as NSString).doubleValue,
-                    longitude: (longitudeStr! as NSString).doubleValue,
-                    description: description!,
-                    radius: (radius! as NSString).doubleValue)
-                
+        for placeJson in jsonArray {
+            if let place = parsePlace(placeJson) {
                 places.append(place)
-
-            default:
-                println("Skipping place because format was invalid: ", placeJson)
             }
         }
         return places
     }
-    
+
+    static func parsePlace(placeJson: AnyObject) -> Place? {
+        var longitudeStr: NSString?
+        var latitudeStr: NSString?
+        if let coordinates = placeJson["Coordinates"] as? NSString {
+            let separatedCoords = coordinates.componentsSeparatedByString(", ")
+            latitudeStr = separatedCoords.first as? NSString
+            longitudeStr = separatedCoords.count > 1 ? (separatedCoords[1] as NSString) : nil
+        }
+        let name = placeJson["Title"] as? NSString
+        let category = placeJson["Category"] as? NSString
+        let description = placeJson["Discription"] as? NSString
+        let radius = placeJson["Radius"] as? NSString
+        switch (name, category, description, radius, longitudeStr) {
+        case (.Some(_), .Some(_), .Some(_), .Some(_), .Some(_)):
+            return Place(
+                name: name!,
+                category: category!,
+                latitude: latitudeStr!.doubleValue,
+                longitude: longitudeStr!.doubleValue,
+                description: description!,
+                radius: radius!.doubleValue)
+        default:
+            println("Skipping place because format was invalid: ", placeJson)
+            return nil
+        }
+    }
+
     static func notificationsForPlaces(places : [Place]) -> [UILocalNotification] {
         return places.map({ (place: Place) -> UILocalNotification in
             let notification = UILocalNotification()
@@ -60,7 +68,7 @@ struct Places{
         }
         println("registered \(notifications.count) notifications");
     }
-    
+
     static func setupInitialPlaceNotifications() {
         let notifications = notificationsForPlaces(initialPlaces())
         UIApplication.sharedApplication().cancelAllLocalNotifications();
