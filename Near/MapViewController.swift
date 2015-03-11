@@ -3,7 +3,7 @@ import MapKit
 import CoreLocation
 import Darwin
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIApplicationDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIApplicationDelegate{
 
     @IBOutlet weak var mapElement: MKMapView!
     @IBOutlet weak var placeTitle: UILabel!
