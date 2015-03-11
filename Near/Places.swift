@@ -7,15 +7,9 @@ struct Places{
         let path = NSBundle.mainBundle().pathForResource("sample-places-helsinki", ofType: "json")
         let bundle = NSBundle.mainBundle();
         let placeInfoJSONString = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)!
-        let jsonArray = NSJSONSerialization.JSONObjectWithData(placeInfoJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
+        let jsonArray = NSJSONSerialization.JSONObjectWithData(placeInfoJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, options: NSJSONReadingOptions.MutableContainers, error: nil) as [NSDictionary]
         
-        var places: [Place] = []
-        for placeJson in jsonArray {
-            if let place = parsePlace(placeJson) {
-                places.append(place)
-            }
-        }
-        return places
+        return jsonArray.map(parsePlace).filter{ $0 != nil }.map{ $0! }
     }
 
     static func parsePlace(placeJson: AnyObject) -> Place? {
