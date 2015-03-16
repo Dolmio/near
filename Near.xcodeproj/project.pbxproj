@@ -34,7 +34,10 @@
 		AFB8C1EB1A7BD108006DB57D /* skiffer-liuskaluoto.gpx in Resources */ = {isa = PBXBuildFile; fileRef = AFB8C1EA1A7BD108006DB57D /* skiffer-liuskaluoto.gpx */; };
 		AFB8C1ED1A7BD112006DB57D /* teurastamo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = AFB8C1EC1A7BD112006DB57D /* teurastamo.gpx */; };
 		AFB8C1F71A7BD569006DB57D /* sample-places-helsinki.json in Resources */ = {isa = PBXBuildFile; fileRef = AFB8C1F61A7BD569006DB57D /* sample-places-helsinki.json */; };
-		AFF16E731A7BC8E800EFF6AE /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF16E721A7BC8E800EFF6AE /* Places.swift */; };
+		AFF16E731A7BC8E800EFF6AE /* PlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF16E721A7BC8E800EFF6AE /* PlaceController.swift */; };
+		E67FE1421AB750EB00F01F09 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E67FE1401AB750EB00F01F09 /* Model.xcdatamodeld */; };
+		E67FE1441AB7525300F01F09 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67FE1431AB7525300F01F09 /* CoreData.framework */; };
+		E67FE1791AB756C800F01F09 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FE1781AB756C800F01F09 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +78,11 @@
 		AFB8C1EA1A7BD108006DB57D /* skiffer-liuskaluoto.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "skiffer-liuskaluoto.gpx"; sourceTree = "<group>"; };
 		AFB8C1EC1A7BD112006DB57D /* teurastamo.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = teurastamo.gpx; sourceTree = "<group>"; };
 		AFB8C1F61A7BD569006DB57D /* sample-places-helsinki.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sample-places-helsinki.json"; sourceTree = "<group>"; };
-		AFF16E721A7BC8E800EFF6AE /* Places.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
+		AFF16E721A7BC8E800EFF6AE /* PlaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceController.swift; sourceTree = "<group>"; };
 		DC9AC305BA16C6EA8D60A2EF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E67FE1411AB750EB00F01F09 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E67FE1431AB7525300F01F09 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E67FE1781AB756C800F01F09 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		E8CC2D64CBE8E7AB1022656A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E67FE1441AB7525300F01F09 /* CoreData.framework in Frameworks */,
 				6D5555AE1A77ECD5002B2206 /* CoreLocation.framework in Frameworks */,
 				6D5555AC1A77EBDB002B2206 /* MapKit.framework in Frameworks */,
 			);
@@ -103,6 +110,7 @@
 		6F17C15E7371A7E7BA2F1B45 = {
 			isa = PBXGroup;
 			children = (
+				E67FE1401AB750EB00F01F09 /* Model.xcdatamodeld */,
 				AFB8C1F61A7BD569006DB57D /* sample-places-helsinki.json */,
 				AFB8C1EC1A7BD112006DB57D /* teurastamo.gpx */,
 				AFB8C1EA1A7BD108006DB57D /* skiffer-liuskaluoto.gpx */,
@@ -165,8 +173,9 @@
 				6F17C251C388DAE95430F64E /* Supporting Files */,
 				6F17CAC93073951E270EAD6E /* Images.xcassets */,
 				6F17CF37C3E4AFF5021EB28E /* LaunchScreen.xib */,
-				AFF16E721A7BC8E800EFF6AE /* Places.swift */,
+				AFF16E721A7BC8E800EFF6AE /* PlaceController.swift */,
 				6F17C2287DD61C1FC467C9C6 /* AppDelegate.swift */,
+				E67FE1781AB756C800F01F09 /* Place.swift */,
 				6F17C5159976F8E3EDDE4D9C /* Main.storyboard */,
 				6F17CBA0D437CBF1F7E1B83F /* MapViewController.swift */,
 				AF9748B21A9D223D00ACBD79 /* Colors.swift */,
@@ -187,6 +196,7 @@
 		D45DAFA3E7C05AC25384C8EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E67FE1431AB7525300F01F09 /* CoreData.framework */,
 				E8CC2D64CBE8E7AB1022656A /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -304,9 +314,11 @@
 				6DF9136D1AACAE850046BD45 /* LocationPermissionViewController.swift in Sources */,
 				6F17C59209C3D42EA3FD0F33 /* AppDelegate.swift in Sources */,
 				6DF913711AACB05F0046BD45 /* YellowButton.swift in Sources */,
+				E67FE1421AB750EB00F01F09 /* Model.xcdatamodeld in Sources */,
 				6DF913751AACBF280046BD45 /* IntroductionSegue.swift in Sources */,
 				6F17C41A0BBD11E2F0306F9D /* MapViewController.swift in Sources */,
-				AFF16E731A7BC8E800EFF6AE /* Places.swift in Sources */,
+				AFF16E731A7BC8E800EFF6AE /* PlaceController.swift in Sources */,
+				E67FE1791AB756C800F01F09 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +531,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E67FE1401AB750EB00F01F09 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E67FE1411AB750EB00F01F09 /* Model.xcdatamodel */,
+			);
+			currentVersion = E67FE1411AB750EB00F01F09 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6F17C7439670C111C5C64B14 /* Project object */;
 }
