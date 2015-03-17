@@ -4,20 +4,17 @@ import CoreData
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
 
 
     var window: UIWindow?
-    let locationManager = CLLocationManager()
-
-
-
+    var placeController:PlaceController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        locationManager.delegate = self;
+        placeController = PlaceController()
         if(CLLocationManager.isMonitoringAvailableForClass(CLRegion)){
             println("Setting up places and regions")
-            PlaceController().setupPlacesAndRegions(locationManager)
+            placeController!.setupPlacesAndRegions()
         }
         else {
             println("No region monitoring available. User should enable it")
@@ -58,17 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         NSNotificationCenter.defaultCenter().postNotificationName("notificationSettingsRegistered", object: nil);
         
         // inspect notificationSettings to see what the user said!
-    }
-
-    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
-        let recentLocation = locationManager.location
-        let locationAccuracyThreshold = 100.0
-        if(recentLocation.horizontalAccuracy <= locationAccuracyThreshold) {
-            let placeController = PlaceController()
-            if let place = placeController.fetchPlaceWithName(region.identifier){
-                placeController.scheduleNotificationForPlace(place)
-            }
-        }
     }
 
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {

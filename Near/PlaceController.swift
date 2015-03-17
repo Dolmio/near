@@ -3,9 +3,16 @@ import UIKit
 import CoreLocation
 import CoreData
 
-class PlaceController {
+class PlaceController: NSObject, CLLocationManagerDelegate {
 
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+
+    var locationManager = CLLocationManager()
+
+    override init() {
+        super.init()
+        locationManager.delegate = self
+    }
 
     func readAndPersistPlaces() -> [Place] {
         let path = NSBundle.mainBundle().pathForResource("sample-places-helsinki", ofType: "json")
@@ -84,7 +91,7 @@ class PlaceController {
     }
 
 
-    func setupPlacesAndRegions(lm: CLLocationManager) {
+    func setupPlacesAndRegions() {
         let places = readAndPersistPlaces()
         let regionsToMonitor = places.map({(place) -> CLRegion in
             let coords = CLLocationCoordinate2D(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue)
@@ -94,7 +101,18 @@ class PlaceController {
             return region
         })
         for region in regionsToMonitor {
-            lm.startMonitoringForRegion(region)
+            locationManager.startMonitoringForRegion(region)
+        }
+    }
+
+    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
+        let recentLocation = locationManager.location
+        let locationAccuracyThreshold = 100.0
+        if(recentLocation.horizontalAccuracy <= locationAccuracyThreshold) {
+            let placeController = PlaceController()
+            if let place = placeController.fetchPlaceWithName(region.identifier){
+                placeController.scheduleNotificationForPlace(place)
+            }
         }
     }
 }
