@@ -76,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapElement.addOverlay(placeCircle)
 
         if let userLocation = locationManager.location {
-            let userLocationCircle = UserLocationCircle(centerCoordinate: userLocation.coordinate, radius: 50)
+            let userLocationCircle = UserLocationCircle(centerCoordinate: userLocation.coordinate, radius: max(50, userLocation.horizontalAccuracy))
              mapElement.addOverlay(userLocationCircle)
         }
     }
