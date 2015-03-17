@@ -9,6 +9,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var placeTitle: UILabel!
     @IBOutlet weak var placeDescription: UILabel!
     let locationManager = CLLocationManager()
+    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
     let userLocationArrowView : MKAnnotationView!
     let placeIconView : MKAnnotationView!
@@ -47,6 +48,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if let userInfo = (notification.userInfo as? Dictionary<String,String>) {
             if let name = userInfo["name"] {
                 if let place = PlaceController().fetchPlaceWithName(name){
+                    place.visited = true
+                    place.lastVisit = NSDate()
+                    appDelegate.saveContext()
                     refreshMap(place)
                     placeTitle.text = place.name
                     placeDescription.text = place.descriptionText

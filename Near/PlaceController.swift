@@ -66,6 +66,24 @@ class PlaceController {
         }
     }
 
+    func fetchVisitedPlaces() -> [Place] {
+        let fetchRequest = NSFetchRequest(entityName: "Place")
+        let predicate = NSPredicate(format: "visited == %@", true)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastVisit", ascending: false), NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.predicate = predicate
+        var maybeError: NSError?
+        if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(fetchRequest, error: &maybeError) as? [Place] {
+            return fetchResults
+        }
+        else if let error = maybeError{
+            println("Error fetching visted places: \(error.localizedDescription)")
+            return []
+        }else{
+            return []
+        }
+    }
+
+
     func setupPlacesAndRegions(lm: CLLocationManager) {
         let places = readAndPersistPlaces()
         let regionsToMonitor = places.map({(place) -> CLRegion in
