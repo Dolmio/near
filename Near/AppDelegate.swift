@@ -59,6 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         println("Received local notification when application state was: \(getApplicationStateString(application.applicationState))");
         if(application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background){
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let mapViewController = storyBoard.instantiateViewControllerWithIdentifier("mapView") as MapViewController
+            window?.rootViewController = mapViewController
             NSNotificationCenter.defaultCenter().postNotificationName("refreshMapView", object: nil, userInfo: notification.userInfo);
         }
     }
