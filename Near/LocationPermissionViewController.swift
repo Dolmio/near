@@ -5,7 +5,7 @@ class LocationPermissionViewController: UIViewController, CLLocationManagerDeleg
     let locationManager = CLLocationManager()
 
     @IBAction func askLocationPermissions(sender: UIButton) {
-        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized {
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways{
             performSegue()
         } else {
             locationManager.delegate = self
