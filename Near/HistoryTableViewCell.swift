@@ -25,7 +25,7 @@ class HistoryTableViewCell: UITableViewCell {
 
         if let place = self.place {
             placeName?.text = place.name
-            placeDescription?.text = place.description
+            placeDescription?.text = place.descriptionText
         }
     }
 

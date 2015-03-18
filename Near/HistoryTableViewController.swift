@@ -45,7 +45,7 @@ class HistoryTableViewController: UITableViewController {
         static let cellReuseIdentifier = "HistoryCell"
 
         // DEMO CONTENT (could be here):
-        static let demoPlaces: [Place] = []
+        static let demoPlaces: [Place] = PlaceController().fetchAllPlaces()
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
