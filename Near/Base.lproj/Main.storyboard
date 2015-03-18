@@ -90,12 +90,11 @@
                         <outlet property="mapElement" destination="SGg-tU-MAq" id="Obg-DV-jWW"/>
                         <outlet property="placeDescription" destination="wmj-AD-teP" id="Lkj-yY-f1l"/>
                         <outlet property="placeTitle" destination="SEw-x7-oP5" id="lAt-bS-XMX"/>
-                        <segue destination="jB5-Z6-ecy" kind="show" identifier="toIntroduction" id="jrK-r8-enN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787" y="-89"/>
+            <point key="canvasLocation" x="920" y="-52"/>
         </scene>
         <!--History Table View Controller-->
         <scene sceneID="9fN-6P-kUQ">
@@ -206,6 +205,9 @@ San Francisco</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="HzF-PO-2an"/>
+                    <connections>
+                        <segue destination="jB5-Z6-ecy" kind="show" identifier="toIntroduction" id="gko-ce-PiM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blk-yc-SvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -416,12 +418,12 @@ I currently operate only in Helsinki.
                         </variation>
                     </view>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="custom" identifier="toMain" customClass="IntroductionSegue" customModule="Near" customModuleProvider="target" id="b1O-1M-Ibm"/>
+                        <segue destination="Tnx-FT-tBo" kind="custom" identifier="toMain" customClass="IntroductionSegue" customModule="Near" customModuleProvider="target" id="kc9-aR-PTQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtA-z1-Kle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="777"/>
+            <point key="canvasLocation" x="-779" y="1540"/>
         </scene>
         <!--Location Permission View Controller-->
         <scene sceneID="0go-Jm-j7R">
@@ -531,7 +533,4 @@ I currently operate only in Helsinki.
         <image name="icon_map_listview.png" width="20" height="28"/>
         <image name="icon_map_listview_ver2.png" width="10" height="14"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="sTB-Ve-bpM"/>
-    </inferredMetricsTieBreakers>
 </document>

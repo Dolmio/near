@@ -37,12 +37,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
-        if (!NSUserDefaults.standardUserDefaults().boolForKey("userHasSeenIntroduction")) {
-            performSegueWithIdentifier("toIntroduction", sender: self)
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
