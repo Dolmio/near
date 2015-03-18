@@ -12,12 +12,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         placeController = PlaceController()
-        if(CLLocationManager.isMonitoringAvailableForClass(CLRegion)){
+        let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("firstLaunch")
+        if(!firstLaunch && CLLocationManager.isMonitoringAvailableForClass(CLRegion)){
             println("Setting up places and regions")
             placeController!.setupPlacesAndRegions()
-        }
-        else {
-            println("No region monitoring available. User should enable it")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
         }
         return true
     }
