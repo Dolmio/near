@@ -44,7 +44,6 @@ class HistoryTableViewController: UITableViewController {
     private struct Storyboard {
         static let cellReuseIdentifier = "HistoryCell"
 
-        // DEMO CONTENT (could be here):
         static let demoPlaces: [Place] = PlaceController().fetchAllPlaces()
     }
 
@@ -62,6 +61,16 @@ class HistoryTableViewController: UITableViewController {
         cell.tweakSizeAccordingToTable(tableView)
         return cell
     }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "toMapSegue") {
+            let mapViewController = segue.destinationViewController as MapViewController
+            if let indexPath = self.tableView.indexPathForSelectedRow(){
+                      mapViewController.currentPlace = Storyboard.demoPlaces[indexPath.row]
+            }
+        }
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
