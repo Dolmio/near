@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -93,6 +96,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="787" y="-89"/>
+        </scene>
+        <!--History Table View Controller-->
+        <scene sceneID="9fN-6P-kUQ">
+            <objects>
+                <tableViewController id="Tnx-FT-tBo" customClass="HistoryTableViewController" customModule="Near" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="193" sectionHeaderHeight="22" sectionFooterHeight="22" id="48c-Mw-o2Q">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.81960784313725488" green="0.81960784313725488" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Ufb-fe-c9d" userLabel="Header Subview">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_header_ver2.png" translatesAutoresizingMaskIntoConstraints="NO" id="dk6-yK-Wyg">
+                                    <rect key="frame" x="0.0" y="22" width="600" height="11"/>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="dk6-yK-Wyg" firstAttribute="leading" secondItem="Ufb-fe-c9d" secondAttribute="leading" id="0C7-Yl-xQf"/>
+                                <constraint firstAttribute="bottom" secondItem="dk6-yK-Wyg" secondAttribute="bottom" constant="5" id="QYO-ja-rYC"/>
+                                <constraint firstAttribute="trailing" secondItem="dk6-yK-Wyg" secondAttribute="trailing" id="Szu-tW-wfo"/>
+                                <constraint firstItem="dk6-yK-Wyg" firstAttribute="top" secondItem="Ufb-fe-c9d" secondAttribute="top" constant="22" id="hQT-0a-r2j"/>
+                            </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="214" id="d0s-rX-kWk" userLabel="Footer Subview">
+                            <rect key="frame" x="0.0" y="253" width="600" height="214"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="169" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-wA-VBP">
+                                    <rect key="frame" x="50" y="25" width="500" height="169"/>
+                                    <string key="text">Great!
+You are done. Just close me and hit the streets. I will let you know if there's something interesting near you.
+
+You can use me near
+Berlin
+Helsinki
+London
+San Francisco</string>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="hWh-wA-VBP" firstAttribute="leading" secondItem="d0s-rX-kWk" secondAttribute="leading" constant="50" id="9wO-d8-9ej"/>
+                                <constraint firstItem="hWh-wA-VBP" firstAttribute="top" secondItem="d0s-rX-kWk" secondAttribute="top" constant="25" id="WyN-kX-LVn"/>
+                                <constraint firstAttribute="bottom" secondItem="hWh-wA-VBP" secondAttribute="bottom" priority="250" constant="25" id="sAK-Cf-uFP"/>
+                                <constraint firstAttribute="trailing" secondItem="hWh-wA-VBP" secondAttribute="trailing" constant="50" id="tKx-Aw-HJA"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="193" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="193" id="Wec-hK-Nak" customClass="HistoryTableViewCell" customModule="Near" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="250" tableViewCell="Wec-hK-Nak" id="6go-4U-uoA">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_map_listview_ver2.png" translatesAutoresizingMaskIntoConstraints="NO" id="KwU-9b-kOq" userLabel="Place Icon">
+                                            <rect key="frame" x="30" y="25" width="10" height="57"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="10" id="pYZ-Lv-u8K"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="57" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WDL-ss-StB" userLabel="Place Header Label">
+                                            <rect key="frame" x="50" y="25" width="500" height="57"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="200" constant="20" id="nEG-oK-hTa"/>
+                                            </constraints>
+                                            <string key="text">HEADER Lorem Ipsum tote bag Truffaut master cleanse, Helvetica try-hard sustainable normcore Lorem Ipsum tote bag Truffaut master cleanse, Helvetica try-hard sustainable normcore</string>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                            <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="500" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="104" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRN-Sr-pig" userLabel="Place Description Label">
+                                            <rect key="frame" x="50" y="85" width="500" height="82"/>
+                                            <string key="text">DESCRIPTION Lorem Ipsum tote bag Truffaut master cleanse, Helvetica try-hard sustainable normcore. Authentic Carles Truffaut, crucifix Pitchfork cronut you probably haven't heard of them squid swag Schlitz gluten-free. Farm-to-table freegan chia artisan, church-key cray gastropub sartorial tousled pickled Williamsburg. Disrupt cornhole banjo, 90's pour-over food truck meh flannel. Mlkshk raw denim aesthetic fixie Wes Anderson, hoodie 3 wolf moon roof party pour-over. </string>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="WDL-ss-StB" firstAttribute="top" secondItem="6go-4U-uoA" secondAttribute="top" constant="25" id="4GX-hl-pRI"/>
+                                        <constraint firstItem="KwU-9b-kOq" firstAttribute="height" secondItem="WDL-ss-StB" secondAttribute="height" priority="750" id="G3T-JL-FAX"/>
+                                        <constraint firstItem="SRN-Sr-pig" firstAttribute="top" secondItem="WDL-ss-StB" secondAttribute="bottom" constant="3" id="KXV-9a-EQe"/>
+                                        <constraint firstItem="KwU-9b-kOq" firstAttribute="top" secondItem="6go-4U-uoA" secondAttribute="top" constant="25" id="RJU-fl-44g"/>
+                                        <constraint firstAttribute="trailing" secondItem="WDL-ss-StB" secondAttribute="trailing" constant="50" id="W9n-LP-LnU"/>
+                                        <constraint firstItem="SRN-Sr-pig" firstAttribute="leading" secondItem="6go-4U-uoA" secondAttribute="leading" constant="50" id="XUX-yC-NBq"/>
+                                        <constraint firstItem="WDL-ss-StB" firstAttribute="leading" secondItem="KwU-9b-kOq" secondAttribute="trailing" constant="10" id="c4e-ym-hem"/>
+                                        <constraint firstAttribute="bottom" secondItem="SRN-Sr-pig" secondAttribute="bottom" constant="25" id="i8A-Id-D3T"/>
+                                        <constraint firstItem="KwU-9b-kOq" firstAttribute="leading" secondItem="6go-4U-uoA" secondAttribute="leading" constant="30" id="iy9-go-JcV"/>
+                                        <constraint firstAttribute="trailing" secondItem="SRN-Sr-pig" secondAttribute="trailing" constant="50" id="kDs-Ch-Qex"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="placeDescription" destination="SRN-Sr-pig" id="lQd-tT-d5z"/>
+                                    <outlet property="placeName" destination="WDL-ss-StB" id="8EU-eL-Aw8"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Tnx-FT-tBo" id="9J3-Tg-95f"/>
+                            <outlet property="delegate" destination="Tnx-FT-tBo" id="5LK-rL-d4u"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="blk-yc-SvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1527" y="-89"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="j1N-fh-cex">
@@ -410,6 +525,8 @@ I currently operate only in Helsinki.
         </scene>
     </scenes>
     <resources>
+        <image name="Logo_header_ver2.png" width="47" height="11"/>
         <image name="icon_map_listview.png" width="20" height="28"/>
+        <image name="icon_map_listview_ver2.png" width="10" height="14"/>
     </resources>
 </document>

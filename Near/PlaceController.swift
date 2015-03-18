@@ -90,7 +90,21 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         }
     }
 
-
+    func fetchAllPlaces() -> [Place] {
+        let fetchRequest = NSFetchRequest(entityName: "Place")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastVisit", ascending: false), NSSortDescriptor(key: "name", ascending: true)]
+        var maybeError: NSError?
+        if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(fetchRequest, error: &maybeError) as? [Place] {
+            return fetchResults
+        }
+        else if let error = maybeError{
+            println("Error fetching visted places: \(error.localizedDescription)")
+            return []
+        }else{
+            return []
+        }
+    }
+    
     func setupPlacesAndRegions() {
         let places = readAndPersistPlaces()
         let regionsToMonitor = places.map({(place) -> CLRegion in
