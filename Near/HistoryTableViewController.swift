@@ -44,14 +44,8 @@ class HistoryTableViewController: UITableViewController {
     private struct Storyboard {
         static let cellReuseIdentifier = "HistoryCell"
 
-        // DEMO CONTENT:
-        static let demoPlaces = [
-            Place(name: "Eka paikka on tosi pitkä nimeltään, joten sen ehkä pitäisi rivittyä silleen kivasti!", category: "kategoria 1", latitude: 0.0, longitude: 0.0, description: "Tähän tulee myös paikan kuvaus.", radius: 0.0),
-            Place(name: "Paikka 2", category: "kategoria 1", latitude: 0.0, longitude: 0.0, description: "Tähän paikan kuvaus", radius: 0.0),
-            Place(name: "Tämä yksi on tosi pitkä teksti, joten sen ehkä pitäisi rivittyä silleen kivasti!", category: "kategoria 2", latitude: 0.0, longitude: 0.0, description: "Craft beer synth small batch, artisan meggings Kickstarter normcore fingerstache. McSweeney's next level gentrify synth roof party, swag freegan. Semiotics Brooklyn brunch narwhal, Marfa hella quinoa 8-bit organic Godard hashtag Williamsburg mlkshk.", radius: 0.0),
-            Place(name: "Yksirivinen otsikko", category: "kategoria 1", latitude: 0.0, longitude: 0.0, description: "Tähän pitkä paikan kuvaus... Craft beer synth small batch, artisan meggings Kickstarter normcore fingerstache. McSweeney's next level gentrify synth roof party, swag freegan. Semiotics Brooklyn brunch narwhal, Marfa hella quinoa 8-bit organic Godard hashtag Williamsburg mlkshk.", radius: 0.0),
-
-        ]
+        // DEMO CONTENT (could be here):
+        static let demoPlaces: [Place] = []
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
