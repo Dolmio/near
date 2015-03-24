@@ -13,6 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     let userLocationArrowView : MKAnnotationView!
     let placeIconView : MKAnnotationView!
+    var currentPlace : Place?
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,40 +27,37 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshViewWithPlace:", name:"refreshMapView", object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshViewWithPlaceFromNotification:", name:"refreshMapView", object: nil);
         mapElement.delegate = self
         if(CLLocationManager.headingAvailable()){
             locationManager.startUpdatingHeading()
         }
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        if (!NSUserDefaults.standardUserDefaults().boolForKey("userHasSeenIntroduction")) {
-            performSegueWithIdentifier("toIntroduction", sender: self)
+        if let place = currentPlace {
+            updateMapView(place)
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func refreshViewWithPlace(notification:NSNotification) {
+    func refreshViewWithPlaceFromNotification(notification:NSNotification) {
         if let userInfo = (notification.userInfo as? Dictionary<String,String>) {
             if let name = userInfo["name"] {
                 if let place = PlaceController().fetchPlaceWithName(name){
                     place.visited = true
                     place.lastVisit = NSDate()
                     appDelegate.saveContext()
-                    refreshMap(place)
-                    placeTitle.text = place.name
-                    placeDescription.text = place.descriptionText
+                    updateMapView(place)
                 }
             }
         }
     }
 
-    func refreshMap(place:Place) {
+    func updateMapView(place:Place) {
+        placeTitle.text = place.name
+        placeDescription.text = place.descriptionText
         resetPlaces();
         let placeLocation = CLLocationCoordinate2D(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue);
         let mapSizeToRadiusMultiplier = 1.5

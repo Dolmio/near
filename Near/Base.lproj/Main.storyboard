@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tnx-FT-tBo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -90,12 +90,11 @@
                         <outlet property="mapElement" destination="SGg-tU-MAq" id="Obg-DV-jWW"/>
                         <outlet property="placeDescription" destination="wmj-AD-teP" id="Lkj-yY-f1l"/>
                         <outlet property="placeTitle" destination="SEw-x7-oP5" id="lAt-bS-XMX"/>
-                        <segue destination="jB5-Z6-ecy" kind="show" identifier="toIntroduction" id="jrK-r8-enN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787" y="-89"/>
+            <point key="canvasLocation" x="920" y="-52"/>
         </scene>
         <!--History Table View Controller-->
         <scene sceneID="9fN-6P-kUQ">
@@ -196,6 +195,7 @@ San Francisco</string>
                                 <connections>
                                     <outlet property="placeDescription" destination="SRN-Sr-pig" id="lQd-tT-d5z"/>
                                     <outlet property="placeName" destination="WDL-ss-StB" id="8EU-eL-Aw8"/>
+                                    <segue destination="vXZ-lx-hvc" kind="show" identifier="toMapSegue" id="sTB-Ve-bpM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -204,10 +204,14 @@ San Francisco</string>
                             <outlet property="delegate" destination="Tnx-FT-tBo" id="5LK-rL-d4u"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="HzF-PO-2an"/>
+                    <connections>
+                        <segue destination="jB5-Z6-ecy" kind="show" identifier="toIntroduction" id="gko-ce-PiM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blk-yc-SvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1527" y="-89"/>
+            <point key="canvasLocation" x="174" y="-52"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="j1N-fh-cex">
@@ -414,12 +418,12 @@ I currently operate only in Helsinki.
                         </variation>
                     </view>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="custom" identifier="toMain" customClass="IntroductionSegue" customModule="Near" customModuleProvider="target" id="b1O-1M-Ibm"/>
+                        <segue destination="Tnx-FT-tBo" kind="custom" identifier="toMain" customClass="IntroductionSegue" customModule="Near" customModuleProvider="target" id="kc9-aR-PTQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtA-z1-Kle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="777"/>
+            <point key="canvasLocation" x="-779" y="1540"/>
         </scene>
         <!--Location Permission View Controller-->
         <scene sceneID="0go-Jm-j7R">

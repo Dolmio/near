@@ -10,6 +10,8 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController {
 
+    let visitedPlaces: [Place] = PlaceController().fetchVisitedPlaces()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -20,6 +22,12 @@ class HistoryTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        if (!NSUserDefaults.standardUserDefaults().boolForKey("userHasSeenIntroduction")) {
+            performSegueWithIdentifier("toIntroduction", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,30 +46,30 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return Storyboard.demoPlaces.count
+        return visitedPlaces.count
     }
 
     private struct Storyboard {
         static let cellReuseIdentifier = "HistoryCell"
 
-        // DEMO CONTENT (could be here):
-        static let demoPlaces: [Place] = PlaceController().fetchAllPlaces()
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellReuseIdentifier, forIndexPath: indexPath) as HistoryTableViewCell
-
-        // DEMO CONTENT
-        switch (indexPath.row) {
-        case 0..<Storyboard.demoPlaces.count:
-            cell.place = Storyboard.demoPlaces[indexPath.row]
-        default:
-            cell.place = nil
-        }
-
+        cell.place = visitedPlaces[indexPath.row]
         cell.tweakSizeAccordingToTable(tableView)
         return cell
     }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "toMapSegue") {
+            let mapViewController = segue.destinationViewController as MapViewController
+            if let indexPath = self.tableView.indexPathForSelectedRow(){
+                      mapViewController.currentPlace = visitedPlaces[indexPath.row]
+            }
+        }
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
