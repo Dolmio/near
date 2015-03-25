@@ -12,12 +12,14 @@ class HistoryTableViewController: UITableViewController {
 
     let visitedPlaces: [Place] = PlaceController().fetchVisitedPlaces()
     @IBOutlet weak var delimeterLine: UIView!
+    @IBOutlet weak var footerView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         delimeterLine.hidden = visitedPlaces.count  == 0
+        footerView.alpha = visitedPlaces.count == 0 ? 1 : 0.5
 
     }
 
@@ -53,7 +55,9 @@ class HistoryTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellReuseIdentifier, forIndexPath: indexPath) as HistoryTableViewCell
-        cell.place = visitedPlaces[indexPath.row]
+        let place = visitedPlaces[indexPath.row]
+        setAlphaForCell(cell, place: place)
+        cell.place = place
         cell.tweakSizeAccordingToTable(tableView)
         return cell
     }
@@ -67,6 +71,13 @@ class HistoryTableViewController: UITableViewController {
         }
     }
 
+    func setAlphaForCell(cell : HistoryTableViewCell, place : Place) {
+        let oneDayInSeconds = 60 * 60 * 24
+        let tooOldVisitTime = oneDayInSeconds
+        let visitAge = Int(NSDate().timeIntervalSinceDate(place.lastVisit));
+        cell.contentView.alpha = visitAge > tooOldVisitTime ? 0.5 : 1
+
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -140,7 +140,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNB-nn-u0X" userLabel="Delimeter-Line">
                                     <rect key="frame" x="50" y="0.0" width="500" height="1"/>
-                                    <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.72819648692810457" green="0.72819648692810457" blue="0.72819648692810457" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="NLb-m2-RBm"/>
                                     </constraints>
@@ -290,6 +290,7 @@ You are done. Just close me and hit the streets. I will let you know if there's 
                     <navigationItem key="navigationItem" id="HzF-PO-2an"/>
                     <connections>
                         <outlet property="delimeterLine" destination="TNB-nn-u0X" id="qIB-zH-JlD"/>
+                        <outlet property="footerView" destination="d0s-rX-kWk" id="6MA-7w-hhk"/>
                         <segue destination="jB5-Z6-ecy" kind="show" identifier="toIntroduction" id="gko-ce-PiM"/>
                     </connections>
                 </tableViewController>
