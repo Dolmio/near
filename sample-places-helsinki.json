@@ -185,5 +185,27 @@
     "Discription": "Remains of the spa build in 1834. Hidden staircase between two rocks.",
     "Radius": "200",
     "Time period": ""
+  },
+  {
+    "Category": "Test",
+    "OFF": "",
+    "City": "Espoo",
+    "Title": "Learning Hub Greenhouse",
+    "Coordinates": "60.186983, 24.821257",
+    "Address": "Konemiehentie 2, 02150 Espoo",
+    "Discription": "Best place to meet with your student team or do some reading in Otaniemi.",
+    "Radius": "200",
+    "Time period": ""
+  },
+  {
+    "Category": "Test",
+    "OFF": "",
+    "City": "Espoo",
+    "Title": "Alvarin aukio",
+    "Coordinates": "60.184846, 24.828998",
+    "Address": "Otakaari 1, 02150 Espoo",
+    "Discription": "Catch some sun with technology students and admire Alvar Aalto's architecture.",
+    "Radius": "200",
+    "Time period": ""
   }
 ]
