@@ -43,6 +43,7 @@ class HistoryTableViewCell: MGSwipeTableCell {
             placeDescription?.text = place.descriptionText
             cityLabel.text = place.city
             lastVisitLabel.text = formatLastVisitTime(place.lastVisit)
+            setAlphaBasedOnLastVisit(place)
         }
 
         cityLabel.sizeToFit()
@@ -88,6 +89,13 @@ class HistoryTableViewCell: MGSwipeTableCell {
         else {
             return "\(Int(seconds / secondsInMinute)) min ago"
         }
+    }
+
+    func setAlphaBasedOnLastVisit(place : Place) {
+        let oneDayInSeconds = 60 * 60 * 24
+        let tooOldVisitTime = oneDayInSeconds
+        let visitAge = Int(NSDate().timeIntervalSinceDate(place.lastVisit));
+        contentView.alpha = visitAge > tooOldVisitTime ? 0.5 : 1
     }
 
     func tweakSizeAccordingToTable(tableView: UITableView) {

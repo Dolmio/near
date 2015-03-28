@@ -56,7 +56,6 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellReuseIdentifier, forIndexPath: indexPath) as HistoryTableViewCell
         let place = visitedPlaces[indexPath.row]
-        setAlphaForCell(cell, place: place)
         cell.place = place
         cell.tweakSizeAccordingToTable(tableView)
         return cell
@@ -69,14 +68,6 @@ class HistoryTableViewController: UITableViewController {
                       mapViewController.currentPlace = visitedPlaces[indexPath.row]
             }
         }
-    }
-
-    func setAlphaForCell(cell : HistoryTableViewCell, place : Place) {
-        let oneDayInSeconds = 60 * 60 * 24
-        let tooOldVisitTime = oneDayInSeconds
-        let visitAge = Int(NSDate().timeIntervalSinceDate(place.lastVisit));
-        cell.contentView.alpha = visitAge > tooOldVisitTime ? 0.5 : 1
-
     }
 
     /*
