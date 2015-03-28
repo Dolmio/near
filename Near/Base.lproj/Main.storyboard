@@ -146,7 +146,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wq-S5-3cI">
-                                    <rect key="frame" x="50" y="25" width="43.5" height="19"/>
+                                    <rect key="frame" x="50" y="25" width="44" height="19"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
@@ -165,7 +165,7 @@ You are done. Just close me and hit the streets. I will let you know if there's 
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can use me near" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-9e-zDv">
-                                    <rect key="frame" x="50" y="114" width="150.5" height="19"/>
+                                    <rect key="frame" x="50" y="114" width="151" height="19"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="151" id="Amu-dK-W7c"/>
                                     </constraints>
@@ -217,6 +217,7 @@ You are done. Just close me and hit the streets. I will let you know if there's 
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
+                                    <exclude reference="3wy-8A-Nxb"/>
                                     <exclude reference="2g4-RU-ZfX"/>
                                     <exclude reference="Bij-6R-CPu"/>
                                     <exclude reference="TrG-D5-v0H"/>
@@ -227,7 +228,6 @@ You are done. Just close me and hit the streets. I will let you know if there's 
                                     <exclude reference="aEy-Ia-bsX"/>
                                     <exclude reference="lgw-lC-a2M"/>
                                     <exclude reference="n6k-0Q-Khr"/>
-                                    <exclude reference="3wy-8A-Nxb"/>
                                 </mask>
                             </variation>
                         </view>
