@@ -19,6 +19,7 @@ class Place: NSManagedObject {
     @NSManaged var longitude: NSNumber
     @NSManaged var visited: Bool
     @NSManaged var lastVisit: NSDate
+    @NSManaged var city: String
 
 
 }
