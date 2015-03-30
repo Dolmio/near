@@ -18,8 +18,8 @@ class HistoryTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        delimeterLine.hidden = visitedPlaces.count  == 0
-        footerView.alpha = visitedPlaces.count == 0 ? 1 : 0.5
+        delimeterLine.hidden = visitedPlaces.isEmpty
+        footerView.alpha = visitedPlaces.isEmpty ? 1 : 0.5
 
     }
 

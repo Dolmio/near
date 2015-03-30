@@ -57,8 +57,8 @@ class HistoryTableViewCell: MGSwipeTableCell {
         view.frame = adjustedFrame
         view.addSubview(detailContainer)
 
-        rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
-        leftButtons = [view]
+        self.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
+        self.leftButtons = [view]
 
     }
 
