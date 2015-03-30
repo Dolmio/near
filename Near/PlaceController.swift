@@ -57,6 +57,7 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         notification.alertBody = "You're near \(place.name)"
         notification.fireDate = NSDate(timeIntervalSinceNow: 0)
         notification.userInfo = ["name": place.name]
+        notification.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
 
