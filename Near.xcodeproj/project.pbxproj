@@ -43,6 +43,8 @@
 		E67FE1421AB750EB00F01F09 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E67FE1401AB750EB00F01F09 /* Model.xcdatamodeld */; };
 		E67FE1441AB7525300F01F09 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67FE1431AB7525300F01F09 /* CoreData.framework */; };
 		E67FE1791AB756C800F01F09 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67FE1781AB756C800F01F09 /* Place.swift */; };
+		E6DDEF8B1AC6C7DD000A37BB /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DDEF881AC6C7DD000A37BB /* MGSwipeButton.m */; };
+		E6DDEF8C1AC6C7DD000A37BB /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DDEF8A1AC6C7DD000A37BB /* MGSwipeTableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,11 @@
 		E67FE1411AB750EB00F01F09 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E67FE1431AB7525300F01F09 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E67FE1781AB756C800F01F09 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		E6DDEF7C1AC6C59B000A37BB /* Near-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Near-Bridging-Header.h"; sourceTree = "<group>"; };
+		E6DDEF871AC6C7DD000A37BB /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
+		E6DDEF881AC6C7DD000A37BB /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
+		E6DDEF891AC6C7DD000A37BB /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
+		E6DDEF8A1AC6C7DD000A37BB /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
 		E8CC2D64CBE8E7AB1022656A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -132,6 +139,7 @@
 				6F17C53E24BE163316658B1F /* NearTests */,
 				AD59525D7451C9E60C46B65A /* Pods */,
 				D45DAFA3E7C05AC25384C8EE /* Frameworks */,
+				E6DDEF7C1AC6C59B000A37BB /* Near-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,6 +187,7 @@
 		6F17C8F935BC97BE9C9D2883 /* Near */ = {
 			isa = PBXGroup;
 			children = (
+				E6DDEF8D1AC6C7FC000A37BB /* Libs */,
 				6DF913701AACB05F0046BD45 /* YellowButton.swift */,
 				6DF913721AACB18E0046BD45 /* NotificationPermissionViewController.swift */,
 				6DF9136C1AACAE850046BD45 /* LocationPermissionViewController.swift */,
@@ -215,6 +224,25 @@
 				E8CC2D64CBE8E7AB1022656A /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E6DDEF8D1AC6C7FC000A37BB /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				E6DDEF8E1AC6C808000A37BB /* MGSwipeTableCell */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		E6DDEF8E1AC6C808000A37BB /* MGSwipeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				E6DDEF871AC6C7DD000A37BB /* MGSwipeButton.h */,
+				E6DDEF881AC6C7DD000A37BB /* MGSwipeButton.m */,
+				E6DDEF891AC6C7DD000A37BB /* MGSwipeTableCell.h */,
+				E6DDEF8A1AC6C7DD000A37BB /* MGSwipeTableCell.m */,
+			);
+			name = MGSwipeTableCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,8 +359,10 @@
 				AF9748B31A9D223D00ACBD79 /* Colors.swift in Sources */,
 				6DF9136D1AACAE850046BD45 /* LocationPermissionViewController.swift in Sources */,
 				11381D9A1AB974B600737038 /* HistoryTableViewController.swift in Sources */,
+				E6DDEF8C1AC6C7DD000A37BB /* MGSwipeTableCell.m in Sources */,
 				11381D971AB974B600737038 /* AppDelegate.swift in Sources */,
 				6DF913711AACB05F0046BD45 /* YellowButton.swift in Sources */,
+				E6DDEF8B1AC6C7DD000A37BB /* MGSwipeButton.m in Sources */,
 				E67FE1421AB750EB00F01F09 /* Model.xcdatamodeld in Sources */,
 				6DF913751AACBF280046BD45 /* IntroductionSegue.swift in Sources */,
 				11381D991AB974B600737038 /* MapViewController.swift in Sources */,
@@ -411,7 +441,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Near-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -486,7 +517,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Near-Bridging-Header.h";
 			};
 			name = Release;
 		};

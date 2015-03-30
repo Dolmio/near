@@ -35,8 +35,9 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         let category = placeJson["Category"] as? NSString
         let description = placeJson["Discription"] as? NSString
         let radius = placeJson["Radius"] as? NSString
-        switch (name, category, description, radius, longitudeStr, latitudeStr) {
-        case (.Some(_), .Some(_), .Some(_), .Some(_), .Some(_), .Some(_)):
+        let city = placeJson["City"] as? NSString
+        switch (name, category, description, radius, longitudeStr, latitudeStr, city) {
+        case (.Some(_), .Some(_), .Some(_), .Some(_), .Some(_), .Some(_), .Some(_)):
             let newPlace = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: appDelegate.managedObjectContext!) as Place
             newPlace.name = name!
             newPlace.category = category!
@@ -44,6 +45,7 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
             newPlace.latitude = latitudeStr!.doubleValue
             newPlace.radius = radius!.doubleValue
             newPlace.descriptionText = description!
+            newPlace.city = city!
             appDelegate.saveContext()
             return newPlace
         default:

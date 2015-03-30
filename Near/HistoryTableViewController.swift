@@ -11,17 +11,16 @@ import UIKit
 class HistoryTableViewController: UITableViewController {
 
     let visitedPlaces: [Place] = PlaceController().fetchVisitedPlaces()
+    @IBOutlet weak var delimeterLine: UIView!
+    @IBOutlet weak var footerView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+        delimeterLine.hidden = visitedPlaces.isEmpty
+        footerView.alpha = visitedPlaces.isEmpty ? 1 : 0.5
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -56,7 +55,8 @@ class HistoryTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellReuseIdentifier, forIndexPath: indexPath) as HistoryTableViewCell
-        cell.place = visitedPlaces[indexPath.row]
+        let place = visitedPlaces[indexPath.row]
+        cell.place = place
         cell.tweakSizeAccordingToTable(tableView)
         return cell
     }
@@ -69,7 +69,6 @@ class HistoryTableViewController: UITableViewController {
             }
         }
     }
-
 
     /*
     // Override to support conditional editing of the table view.

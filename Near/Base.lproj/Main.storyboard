@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tnx-FT-tBo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tnx-FT-tBo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -7,6 +7,9 @@
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -132,30 +135,101 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="214" id="d0s-rX-kWk" userLabel="Footer Subview">
-                            <rect key="frame" x="0.0" y="253" width="600" height="214"/>
+                            <rect key="frame" x="0.0" y="253" width="600" height="171"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="169" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-wA-VBP">
-                                    <rect key="frame" x="50" y="25" width="500" height="169"/>
-                                    <string key="text">Great!
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNB-nn-u0X" userLabel="Delimeter-Line">
+                                    <rect key="frame" x="50" y="0.0" width="500" height="1"/>
+                                    <color key="backgroundColor" red="0.72819648692810457" green="0.72819648692810457" blue="0.72819648692810457" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="NLb-m2-RBm"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wq-S5-3cI">
+                                    <rect key="frame" x="50" y="25" width="44" height="19"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-wA-VBP">
+                                    <rect key="frame" x="50" y="29" width="500" height="75"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="75" id="C1h-ca-Dde"/>
+                                    </constraints>
+                                    <string key="text">
 You are done. Just close me and hit the streets. I will let you know if there's something interesting near you.
 
-You can use me near
-Berlin
-Helsinki
-London
-San Francisco</string>
+</string>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can use me near" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-9e-zDv">
+                                    <rect key="frame" x="50" y="114" width="151" height="19"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="151" id="Amu-dK-W7c"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Amu-dK-W7c"/>
+                                        </mask>
+                                    </variation>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Helsinki" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGU-WQ-lup">
+                                    <rect key="frame" x="50" y="114" width="500" height="75"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="75" id="8f7-nw-33E"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="SGU-WQ-lup" firstAttribute="leading" secondItem="d0s-rX-kWk" secondAttribute="leading" constant="50" id="0j9-vp-x8s"/>
+                                <constraint firstItem="hWh-wA-VBP" firstAttribute="top" secondItem="d0s-rX-kWk" secondAttribute="top" id="2g4-RU-ZfX"/>
+                                <constraint firstItem="3Wq-S5-3cI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="d0s-rX-kWk" secondAttribute="top" constant="25" id="3Mg-1m-Iy8"/>
+                                <constraint firstAttribute="trailing" secondItem="TNB-nn-u0X" secondAttribute="trailing" id="3wy-8A-Nxb"/>
+                                <constraint firstItem="RlN-9e-zDv" firstAttribute="top" secondItem="hWh-wA-VBP" secondAttribute="bottom" constant="10" id="7M4-PJ-0Dy"/>
+                                <constraint firstItem="3Wq-S5-3cI" firstAttribute="top" secondItem="d0s-rX-kWk" secondAttribute="top" constant="25" id="83p-o5-OSU"/>
                                 <constraint firstItem="hWh-wA-VBP" firstAttribute="leading" secondItem="d0s-rX-kWk" secondAttribute="leading" constant="50" id="9wO-d8-9ej"/>
+                                <constraint firstItem="hWh-wA-VBP" firstAttribute="bottom" secondItem="d0s-rX-kWk" secondAttribute="bottomMargin" id="Bij-6R-CPu"/>
+                                <constraint firstAttribute="trailing" secondItem="SGU-WQ-lup" secondAttribute="trailing" constant="50" id="Dt3-za-Ulv"/>
+                                <constraint firstItem="RlN-9e-zDv" firstAttribute="top" secondItem="hWh-wA-VBP" secondAttribute="bottom" constant="42" id="L88-GQ-HMX"/>
+                                <constraint firstItem="hWh-wA-VBP" firstAttribute="top" secondItem="d0s-rX-kWk" secondAttribute="top" constant="19" id="TrG-D5-v0H"/>
+                                <constraint firstItem="RlN-9e-zDv" firstAttribute="top" secondItem="3Wq-S5-3cI" secondAttribute="top" constant="50" id="Vmz-kK-FXb"/>
+                                <constraint firstItem="RlN-9e-zDv" firstAttribute="leading" secondItem="d0s-rX-kWk" secondAttribute="leading" constant="50" id="VyA-da-8Yp"/>
                                 <constraint firstItem="hWh-wA-VBP" firstAttribute="top" secondItem="d0s-rX-kWk" secondAttribute="top" constant="25" id="WyN-kX-LVn"/>
-                                <constraint firstAttribute="bottom" secondItem="hWh-wA-VBP" secondAttribute="bottom" priority="250" constant="25" id="sAK-Cf-uFP"/>
+                                <constraint firstItem="3Wq-S5-3cI" firstAttribute="leading" secondItem="d0s-rX-kWk" secondAttribute="leading" constant="50" id="a0O-yo-Kxm"/>
+                                <constraint firstItem="RlN-9e-zDv" firstAttribute="top" secondItem="hWh-wA-VBP" secondAttribute="bottom" constant="42" id="aEy-Ia-bsX"/>
+                                <constraint firstItem="TNB-nn-u0X" firstAttribute="leading" secondItem="d0s-rX-kWk" secondAttribute="leading" constant="50" id="gLh-RS-zez"/>
+                                <constraint firstAttribute="trailing" secondItem="TNB-nn-u0X" secondAttribute="trailing" constant="50" id="jjh-zj-tj6"/>
+                                <constraint firstItem="RlN-9e-zDv" firstAttribute="top" secondItem="hWh-wA-VBP" secondAttribute="bottom" constant="19" id="lgw-lC-a2M"/>
+                                <constraint firstItem="RlN-9e-zDv" firstAttribute="leading" secondItem="3Wq-S5-3cI" secondAttribute="leading" id="n6k-0Q-Khr"/>
+                                <constraint firstItem="hWh-wA-VBP" firstAttribute="top" secondItem="3Wq-S5-3cI" secondAttribute="bottom" constant="-15" id="nkQ-a4-mGd"/>
+                                <constraint firstItem="TNB-nn-u0X" firstAttribute="top" secondItem="d0s-rX-kWk" secondAttribute="top" id="pP8-TI-1um"/>
+                                <constraint firstAttribute="bottom" secondItem="hWh-wA-VBP" secondAttribute="bottom" priority="250" constant="8" id="sAK-Cf-uFP"/>
                                 <constraint firstAttribute="trailing" secondItem="hWh-wA-VBP" secondAttribute="trailing" constant="50" id="tKx-Aw-HJA"/>
+                                <constraint firstItem="SGU-WQ-lup" firstAttribute="top" secondItem="hWh-wA-VBP" secondAttribute="bottom" constant="10" id="vnR-U3-2yN"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="3wy-8A-Nxb"/>
+                                    <exclude reference="2g4-RU-ZfX"/>
+                                    <exclude reference="Bij-6R-CPu"/>
+                                    <exclude reference="TrG-D5-v0H"/>
+                                    <exclude reference="WyN-kX-LVn"/>
+                                    <exclude reference="sAK-Cf-uFP"/>
+                                    <exclude reference="L88-GQ-HMX"/>
+                                    <exclude reference="Vmz-kK-FXb"/>
+                                    <exclude reference="aEy-Ia-bsX"/>
+                                    <exclude reference="lgw-lC-a2M"/>
+                                    <exclude reference="n6k-0Q-Khr"/>
+                                </mask>
+                            </variation>
                         </view>
                         <prototypes>
                             <tableViewCell opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="193" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="193" id="Wec-hK-Nak" customClass="HistoryTableViewCell" customModule="Near" customModuleProvider="target">
@@ -176,7 +250,7 @@ San Francisco</string>
                                             </constraints>
                                             <string key="text">HEADER Lorem Ipsum tote bag Truffaut master cleanse, Helvetica try-hard sustainable normcore Lorem Ipsum tote bag Truffaut master cleanse, Helvetica try-hard sustainable normcore</string>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                            <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.050980392156862744" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalCompressionResistancePriority="500" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="104" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRN-Sr-pig" userLabel="Place Description Label">
@@ -215,6 +289,8 @@ San Francisco</string>
                     </tableView>
                     <navigationItem key="navigationItem" id="HzF-PO-2an"/>
                     <connections>
+                        <outlet property="delimeterLine" destination="TNB-nn-u0X" id="qIB-zH-JlD"/>
+                        <outlet property="footerView" destination="d0s-rX-kWk" id="6MA-7w-hhk"/>
                         <segue destination="jB5-Z6-ecy" kind="show" identifier="toIntroduction" id="gko-ce-PiM"/>
                     </connections>
                 </tableViewController>
