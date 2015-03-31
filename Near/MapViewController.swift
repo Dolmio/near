@@ -60,9 +60,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         placeDescription.text = place.descriptionText
         resetPlaces();
         let placeLocation = CLLocationCoordinate2D(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue);
-        let mapSizeToRadiusMultiplier = 1.5
-        let mapSize = mapSizeToRadiusMultiplier * place.radius.doubleValue * 2
-        let mapRegionToShow = MKCoordinateRegionMakeWithDistance(placeLocation, mapSize, mapSize)
+        let mapRegionToShow = calculateMapRegionToShow(placeLocation, possibleUserLocation: locationManager.location, placeRadius: place.radius.doubleValue)
         mapElement.setRegion(mapElement.regionThatFits(mapRegionToShow), animated: true)
 
         let placeAnnotation = MKPointAnnotation()
@@ -76,6 +74,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if let userLocation = locationManager.location {
             let userLocationCircle = UserLocationCircle(centerCoordinate: userLocation.coordinate, radius: max(50, userLocation.horizontalAccuracy))
              mapElement.addOverlay(userLocationCircle)
+        }
+    }
+
+    func calculateMapRegionToShow(placeLocation: CLLocationCoordinate2D, possibleUserLocation: CLLocation?, placeRadius: Double) -> MKCoordinateRegion{
+        let mapSizeMultiplier = 1.5
+        if let userLocation = possibleUserLocation {
+            let distanceBetween = userLocation.distanceFromLocation(CLLocation(latitude: placeLocation.latitude, longitude: placeLocation.longitude))
+            let mapSize = distanceBetween * mapSizeMultiplier * 2
+            return MKCoordinateRegionMakeWithDistance(placeLocation, mapSize, mapSize)
+        }
+        else {
+            let mapSize = placeRadius * mapSizeMultiplier * 2
+            return MKCoordinateRegionMakeWithDistance(placeLocation, mapSize, mapSize)
         }
     }
 
