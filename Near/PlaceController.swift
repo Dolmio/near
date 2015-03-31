@@ -117,6 +117,27 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         for region in regionsToMonitor {
             locationManager.startMonitoringForRegion(region)
         }
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
+    }
+
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        let recentLocation = locationManager.location
+        var berlin = CLLocation(latitude: 52.523333, longitude: 13.411389)
+        var helsinki = CLLocation(latitude: 60.170833, longitude: 24.9375)
+        var london = CLLocation(latitude: 51.507222, longitude: 0.1275)
+        if (recentLocation.distanceFromLocation(berlin) <= 250000) {
+            println("in berlin")
+        } else if (recentLocation.distanceFromLocation(helsinki) <= 105000) {
+            println("in helsinki")
+        } else if (recentLocation.distanceFromLocation(london) <= 750000) {
+            println("in london")
+        }
+        println(recentLocation)
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println(error)
     }
 
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!){
