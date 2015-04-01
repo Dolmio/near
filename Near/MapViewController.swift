@@ -79,15 +79,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     func calculateMapRegionToShow(placeLocation: CLLocationCoordinate2D, possibleUserLocation: CLLocation?, placeRadius: Double) -> MKCoordinateRegion{
         let mapSizeMultiplier = 1.5
+        var mapSize: Double
         if let userLocation = possibleUserLocation {
             let distanceBetween = userLocation.distanceFromLocation(CLLocation(latitude: placeLocation.latitude, longitude: placeLocation.longitude))
-            let mapSize = distanceBetween * mapSizeMultiplier * 2
-            return MKCoordinateRegionMakeWithDistance(placeLocation, mapSize, mapSize)
+            mapSize = distanceBetween * mapSizeMultiplier * 2
         }
         else {
-            let mapSize = placeRadius * mapSizeMultiplier * 2
-            return MKCoordinateRegionMakeWithDistance(placeLocation, mapSize, mapSize)
+            mapSize = placeRadius * mapSizeMultiplier * 2
         }
+        return MKCoordinateRegionMakeWithDistance(placeLocation, mapSize, mapSize)
     }
 
     func resetPlaces() {
