@@ -63,11 +63,11 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         let predicate = NSPredicate(format: "name == %@", name)
         fetchRequest.predicate = predicate
         if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Place] {
-            return fetchResults[0]
+            if fetchResults.count > 0 {
+                return fetchResults[0]
+            }
         }
-        else{
-            return nil
-        }
+        return nil
     }
 
     func fetchVisitedPlaces() -> [Place] {
@@ -120,9 +120,8 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         let recentLocation = locationManager.location
         let locationAccuracyThreshold = 100.0
         if(recentLocation.horizontalAccuracy <= locationAccuracyThreshold) {
-            let placeController = PlaceController()
-            if let place = placeController.fetchPlaceWithName(region.identifier){
-                placeController.scheduleNotificationForPlace(place)
+            if let place = fetchPlaceWithName(region.identifier){
+                scheduleNotificationForPlace(place)
             }
         }
     }

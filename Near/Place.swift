@@ -22,9 +22,13 @@ class Place: NSManagedObject {
     @NSManaged var lastVisit: NSDate
     @NSManaged var city: String
 
+    func getVisitRadius() -> Double {
+        return radius * 0.5
+    }
+    
     func isWithinVisitThreshold(location: CLLocation) -> Bool {
-        let visitRadiusRatio = 0.5
-        return location.distanceFromLocation(CLLocation(latitude: latitude, longitude: longitude)) < radius * visitRadiusRatio
+     
+        return location.distanceFromLocation(CLLocation(latitude: latitude, longitude: longitude)) < getVisitRadius()
     }
 
 }
