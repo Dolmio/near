@@ -18,6 +18,7 @@
 		2ABE753B1AAE654F00A86F38 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE753A1AAE654F00A86F38 /* ViewConstants.swift */; };
 		6D5555AC1A77EBDB002B2206 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5555AB1A77EBDB002B2206 /* MapKit.framework */; };
 		6D5555AE1A77ECD5002B2206 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5555AD1A77ECD5002B2206 /* CoreLocation.framework */; };
+		6DA58A1F1ACBD4B000B28219 /* near_teurastamo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6DA58A1E1ACBD4B000B28219 /* near_teurastamo.gpx */; };
 		6DF9136D1AACAE850046BD45 /* LocationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF9136C1AACAE850046BD45 /* LocationPermissionViewController.swift */; };
 		6DF913711AACB05F0046BD45 /* YellowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF913701AACB05F0046BD45 /* YellowButton.swift */; };
 		6DF913731AACB18E0046BD45 /* NotificationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF913721AACB18E0046BD45 /* NotificationPermissionViewController.swift */; };
@@ -67,6 +68,7 @@
 		626666605C9031CB62AC6534 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6D5555AB1A77EBDB002B2206 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6D5555AD1A77ECD5002B2206 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6DA58A1E1ACBD4B000B28219 /* near_teurastamo.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = near_teurastamo.gpx; sourceTree = "<group>"; };
 		6DF9136C1AACAE850046BD45 /* LocationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionViewController.swift; sourceTree = "<group>"; };
 		6DF913701AACB05F0046BD45 /* YellowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YellowButton.swift; sourceTree = "<group>"; };
 		6DF913721AACB18E0046BD45 /* NotificationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPermissionViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		6F17C15E7371A7E7BA2F1B45 = {
 			isa = PBXGroup;
 			children = (
+				6DA58A1E1ACBD4B000B28219 /* near_teurastamo.gpx */,
 				E67FE1401AB750EB00F01F09 /* Model.xcdatamodeld */,
 				AFB8C1F61A7BD569006DB57D /* sample-places-helsinki.json */,
 				AFB8C1EC1A7BD112006DB57D /* teurastamo.gpx */,
@@ -342,6 +345,7 @@
 				AF9748A41A9D05ED00ACBD79 /* Roboto-Regular.ttf in Resources */,
 				11D591071AA4BB95007AC991 /* Logo_header_ver2@2x.png in Resources */,
 				AF90521E1A9DDC74007E4EF3 /* icon_map_arrow.png in Resources */,
+				6DA58A1F1ACBD4B000B28219 /* near_teurastamo.gpx in Resources */,
 				AFB8C1EB1A7BD108006DB57D /* skiffer-liuskaluoto.gpx in Resources */,
 				AF9052211A9DDC81007E4EF3 /* icon_map_listview.png in Resources */,
 				117918571A8131EA0087C660 /* logo_splashscreen.png in Resources */,

@@ -45,14 +45,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func refreshViewWithPlaceFromNotification(notification:NSNotification) {
         if let userInfo = (notification.userInfo as? Dictionary<String,String>) {
             if let name = userInfo["name"] {
-                if let place = PlaceController().fetchPlaceWithName(name){
-                    place.visited = true
-                    place.lastVisit = NSDate()
-                    appDelegate.saveContext()
+                if let place = PlaceController().fetchPlaceWithName(name) {
+                    if isWithinRegion(locationManager.location, place: place) {
+                        place.visited = true
+                        place.lastVisit = NSDate()
+                        appDelegate.saveContext()
+                    }
                     updateMapView(place)
                 }
             }
         }
+    }
+
+    func isWithinRegion(location: CLLocation, place: Place) -> Bool {
+        let visitRadiusRatio = 0.5
+        return location.distanceFromLocation(CLLocation(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue)) < place.radius.doubleValue * visitRadiusRatio
     }
 
     func updateMapView(place:Place) {
