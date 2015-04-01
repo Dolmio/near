@@ -46,7 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if let userInfo = (notification.userInfo as? Dictionary<String,String>) {
             if let name = userInfo["name"] {
                 if let place = PlaceController().fetchPlaceWithName(name) {
-                    if isWithinRegion(locationManager.location, place: place) {
+                    if place.isWithinVisitThreshold(locationManager.location) {
                         place.visited = true
                         place.lastVisit = NSDate()
                         appDelegate.saveContext()
@@ -57,17 +57,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
 
-    func isWithinRegion(location: CLLocation, place: Place) -> Bool {
-        let visitRadiusRatio = 0.5
-        return location.distanceFromLocation(CLLocation(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue)) < place.radius.doubleValue * visitRadiusRatio
-    }
-
     func updateMapView(place:Place) {
         placeTitle.text = place.name
         placeDescription.text = place.descriptionText
         resetPlaces();
-        let placeLocation = CLLocationCoordinate2D(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue);
-        let mapRegionToShow = calculateMapRegionToShow(placeLocation, possibleUserLocation: locationManager.location, placeRadius: place.radius.doubleValue)
+        let placeLocation = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude);
+        let mapRegionToShow = calculateMapRegionToShow(placeLocation, possibleUserLocation: locationManager.location, placeRadius: place.radius)
         mapElement.setRegion(mapElement.regionThatFits(mapRegionToShow), animated: true)
 
         let placeAnnotation = MKPointAnnotation()
@@ -75,7 +70,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         placeAnnotation.title = "place"
         mapElement.addAnnotation(placeAnnotation)
 
-        let placeCircle = PlaceCircle(centerCoordinate: placeLocation, radius: place.radius.doubleValue)
+        let placeCircle = PlaceCircle(centerCoordinate: placeLocation, radius: place.radius)
         mapElement.addOverlay(placeCircle)
 
         if let userLocation = locationManager.location {

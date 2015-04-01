@@ -105,8 +105,8 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
     func setupPlacesAndRegions() {
         let places = readAndPersistPlaces()
         let regionsToMonitor = places.map({(place) -> CLRegion in
-            let coords = CLLocationCoordinate2D(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue)
-            let region = CLCircularRegion(center:coords, radius: place.radius.doubleValue, identifier: place.name)
+            let coords = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+            let region = CLCircularRegion(center:coords, radius: place.radius, identifier: place.name)
             region.notifyOnEntry = true
             region.notifyOnExit = false
             return region
