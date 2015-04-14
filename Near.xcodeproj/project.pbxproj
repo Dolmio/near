@@ -149,6 +149,7 @@
 		6F17C251C388DAE95430F64E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6F17CAC93073951E270EAD6E /* Images.xcassets */,
 				115DAC811AA70C5C00100B0A /* icon_map_listview_ver2@2x.png */,
 				11D591061AA4BB95007AC991 /* Logo_header_ver2@2x.png */,
 				AF9052231A9DDC8A007E4EF3 /* icon_map.png */,
@@ -196,7 +197,6 @@
 				6DF9136C1AACAE850046BD45 /* LocationPermissionViewController.swift */,
 				115DAC7F1AA7080900100B0A /* HistoryTableViewController.swift */,
 				6F17C251C388DAE95430F64E /* Supporting Files */,
-				6F17CAC93073951E270EAD6E /* Images.xcassets */,
 				6F17CF37C3E4AFF5021EB28E /* LaunchScreen.xib */,
 				AFF16E721A7BC8E800EFF6AE /* PlaceController.swift */,
 				6F17C2287DD61C1FC467C9C6 /* AppDelegate.swift */,

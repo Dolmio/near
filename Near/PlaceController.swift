@@ -70,13 +70,16 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         return nil
     }
 
-    func fetchVisitedPlaces() -> [Place] {
+    static func visitedPlacesRequest() -> NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "Place")
-        let predicate = NSPredicate(format: "visited == %@", true)
+        fetchRequest.predicate = NSPredicate(format: "visited == %@", true)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastVisit", ascending: false), NSSortDescriptor(key: "name", ascending: true)]
-        fetchRequest.predicate = predicate
+        return fetchRequest
+    }
+
+    func fetchVisitedPlaces() -> [Place] {
         var maybeError: NSError?
-        if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(fetchRequest, error: &maybeError) as? [Place] {
+        if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(PlaceController.visitedPlacesRequest(), error: &maybeError) as? [Place] {
             return fetchResults
         }
         else if let error = maybeError{

@@ -76,7 +76,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let recentLocation = locationManager.location
             let locationAccuracyThreshold = 100.0
             if (recentLocation.horizontalAccuracy <= locationAccuracyThreshold) {
-                visitPlace(placeFromNotification!)
+                if let place = placeFromNotification {
+                    visitPlace(placeFromNotification!)
+                }
                 println("visited place")
             }
             locationManager.stopMonitoringForRegion(region)

@@ -1,26 +1,33 @@
-//
-//  HistoryTableViewController.swift
-//  Near
-//
-//  Created by Petteri Noponen on 04/03/15.
-//  Copyright (c) 2015 aalto. All rights reserved.
-//
-
 import UIKit
+import CoreData
 
-class HistoryTableViewController: UITableViewController {
+class HistoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    let visitedPlaces: [Place] = PlaceController().fetchVisitedPlaces()
+    var visitedPlaces = [Place]()
     @IBOutlet weak var delimeterLine: UIView!
     @IBOutlet weak var footerView: UIView!
 
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        var error: NSError? = nil
+        if (fetchedResultsController.performFetch(&error) == false) {
+            println("An error occurred: \(error?.localizedDescription)")
+        }
+
+        updateVisitedPlaces()
+    }
+
+    private func updateVisitedPlaces() {
+        visitedPlaces = fetchedResultsController.fetchedObjects as! [Place]
+
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+
         delimeterLine.hidden = visitedPlaces.isEmpty
         footerView.alpha = visitedPlaces.isEmpty ? 1 : 0.5
-
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -28,6 +35,18 @@ class HistoryTableViewController: UITableViewController {
             performSegueWithIdentifier("toIntroduction", sender: self)
         }
     }
+
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let frc = NSFetchedResultsController(
+            fetchRequest: PlaceController.visitedPlacesRequest(),
+            managedObjectContext: self.appDelegate.managedObjectContext!,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+
+        frc.delegate = self
+
+        return frc
+    }()
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -37,14 +56,10 @@ class HistoryTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         return visitedPlaces.count
     }
 
@@ -68,6 +83,13 @@ class HistoryTableViewController: UITableViewController {
                       mapViewController.currentPlace = visitedPlaces[indexPath.row]
             }
         }
+    }
+
+    // MARK: NSFetchedResultsControllerDelegate
+
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        updateVisitedPlaces()
+        tableView.reloadData()
     }
 
 }
