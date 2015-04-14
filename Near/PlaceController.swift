@@ -24,31 +24,25 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
     }
 
     func savePlaceFromObject(placeJson: AnyObject) -> Place?{
-        var longitude: Double?
-        var latitude: Double?
-        if let coordinates = placeJson["Coordinates"] as? NSString {
-            let separatedCoords = coordinates.componentsSeparatedByString(", ")
-            latitude = (separatedCoords.first as? NSString)?.doubleValue
-            longitude = separatedCoords.count > 1 ? (separatedCoords[1] as? NSString)?.doubleValue : nil
-        }
-        let name = placeJson["Title"] as? String
-        let category = placeJson["Category"] as? String
-        let description = placeJson["Discription"] as? String
-        let radius = (placeJson["Radius"] as? NSString)?.doubleValue
-        let city = placeJson["City"] as? String
-        switch (name, category, description, radius, longitude, latitude, city) {
-        case (.Some(_), .Some(_), .Some(_), .Some(_), .Some(_), .Some(_), .Some(_)):
+        if let name = placeJson["Title"] as? String,
+            let category = placeJson["Category"] as? String,
+            let description = placeJson["Discription"] as? String,
+            let radius = (placeJson["Radius"] as? NSString)?.doubleValue,
+            let city = placeJson["City"] as? String,
+            let coordinates = (placeJson["Coordinates"] as? NSString)?.componentsSeparatedByString(", "),
+            let latitude = (coordinates.first as? NSString)?.doubleValue,
+            let longitude = (coordinates[1] as? NSString)?.doubleValue where coordinates.count > 1 {
             let newPlace = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: appDelegate.managedObjectContext!) as! Place
-            newPlace.name = name!
-            newPlace.category = category!
-            newPlace.longitude = latitude!
-            newPlace.latitude = longitude!
-            newPlace.radius = radius!
-            newPlace.descriptionText = description!
-            newPlace.city = city!
+            newPlace.name = name
+            newPlace.category = category
+            newPlace.longitude = latitude
+            newPlace.latitude = longitude
+            newPlace.radius = radius
+            newPlace.descriptionText = description
+            newPlace.city = city
             appDelegate.saveContext()
             return newPlace
-        default:
+        } else {
             println("Skipping place because format was invalid: ", placeJson)
             return nil
         }
