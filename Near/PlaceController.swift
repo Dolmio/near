@@ -9,29 +9,43 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
 
     var locationManager = CLLocationManager()
 
+    var currentCity = "Helsinki"
+
     override init() {
         super.init()
         locationManager.delegate = self
     }
 
-    func readAndPersistPlaces() -> [Place] {
-        let path = NSBundle.mainBundle().pathForResource("sample-places-helsinki", ofType: "json")
+    func readJSON(from: String) -> [NSDictionary] {
+        let path = NSBundle.mainBundle().pathForResource(from, ofType: "json")
         let bundle = NSBundle.mainBundle();
-        let placeInfoJSONString = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)!
-        let jsonArray = NSJSONSerialization.JSONObjectWithData(placeInfoJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [NSDictionary]
+        let infoJSONString = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)!
+        let jsonArray = NSJSONSerialization.JSONObjectWithData(infoJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [NSDictionary]
+        return jsonArray
+    }
+
+    func readAndPersistPlaces() -> [Place] {
+        let jsonArray = readJSON("sample-places-helsinki")
         
         return jsonArray.map(savePlaceFromObject).filter{ $0 != nil }.map{ $0! }
     }
 
+    func readAndPersistCities() -> [NearCity] {
+        let jsonArray = readJSON("sample-cities")
+        
+        return jsonArray.map(saveCityFromObject).filter{ $0 != nil }.map{ $0! }
+    }
+
     func savePlaceFromObject(placeJson: AnyObject) -> Place?{
         if let name = placeJson["Title"] as? String,
-            let category = placeJson["Category"] as? String,
-            let description = placeJson["Discription"] as? String,
-            let radius = (placeJson["Radius"] as? NSString)?.doubleValue,
-            let city = placeJson["City"] as? String,
-            let coordinates = (placeJson["Coordinates"] as? NSString)?.componentsSeparatedByString(", "),
-            let latitude = (coordinates.first as? NSString)?.doubleValue,
-            let longitude = (coordinates[1] as? NSString)?.doubleValue where coordinates.count > 1 {
+           let category = placeJson["Category"] as? String,
+           let description = placeJson["Discription"] as? String,
+           let radius = (placeJson["Radius"] as? NSString)?.doubleValue,
+           let city = placeJson["City"] as? String,
+           let coordinates = (placeJson["Coordinates"] as? NSString)?.componentsSeparatedByString(", "),
+           let latitude = (coordinates.first as? NSString)?.doubleValue,
+           let longitude = (coordinates[1] as? NSString)?.doubleValue where coordinates.count > 1
+        {
             let newPlace = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: appDelegate.managedObjectContext!) as! Place
             newPlace.name = name
             newPlace.category = category
@@ -44,6 +58,23 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
             return newPlace
         } else {
             println("Skipping place because format was invalid: ", placeJson)
+            return nil
+        }
+    }
+    
+    func saveCityFromObject(cityJson: AnyObject) -> NearCity?{
+        if let name = cityJson["Name"] as? String,
+           let latitude = (cityJson["Latitude"] as? NSString)?.doubleValue,
+           let longitude = (cityJson["Longitude"] as? NSString)?.doubleValue
+        {
+            let newCity = NSEntityDescription.insertNewObjectForEntityForName("NearCity", inManagedObjectContext: appDelegate.managedObjectContext!) as! NearCity
+            newCity.name = name
+            newCity.longitude = longitude
+            newCity.latitude = latitude
+            appDelegate.saveContext()
+            return newCity
+        } else {
+            println("Skipping city because format was invalid: ", cityJson)
             return nil
         }
     }
@@ -68,6 +99,24 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
             }
         }
         return nil
+    }
+    
+    func fetchPlacesWithinCity(city: String) -> [Place] {
+        let fetchRequest = NSFetchRequest(entityName: "Place")
+        fetchRequest.fetchLimit = 1
+        let predicate = NSPredicate(format: "city == %@", city)
+        fetchRequest.predicate = predicate
+        var maybeError: NSError?
+        if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(fetchRequest, error: &maybeError) as? [Place] {
+            return fetchResults
+        }
+        else if let error = maybeError {
+            println("Error fetching places within city: \(error.localizedDescription)")
+            return []
+        }
+        else{
+            return []
+        }
     }
 
     static func visitedPlacesRequest() -> NSFetchRequest {
@@ -105,8 +154,40 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    func fetchAllCities() -> [NearCity] {
+        let fetchRequest = NSFetchRequest(entityName: "NearCity")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        var maybeError: NSError?
+        if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(fetchRequest, error: &maybeError) as? [NearCity] {
+            return fetchResults
+        }
+        else if let error = maybeError{
+            println("Error fetching visted places: \(error.localizedDescription)")
+            return []
+        }else{
+            return []
+        }
+    }
+    
     func setupPlacesAndRegions() {
         let places = readAndPersistPlaces()
+        let cities = readAndPersistCities()
+        let regionsToMonitor = places.map({(place) -> CLRegion in
+            let coords = CLLocationCoordinate2D(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue)
+            let region = CLCircularRegion(center:coords, radius: place.radius.doubleValue, identifier: place.name)
+            region.notifyOnEntry = true
+            region.notifyOnExit = false
+            return region
+        })
+        for region in regionsToMonitor {
+            locationManager.startMonitoringForRegion(region)
+        }
+        //FIXME: this is for testing purposes, should use significant changes.
+        locationManager.startUpdatingLocation()
+    }
+    
+    func changeRegions() {
+        let places = fetchPlacesWithinCity(currentCity)
         let regionsToMonitor = places.map({(place) -> CLRegion in
             let coords = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
             let region = CLCircularRegion(center:coords, radius: place.radius, identifier: place.name)
@@ -115,25 +196,30 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
             return region
         })
         for region in regionsToMonitor {
+            println("Added region: " + region.identifier)
             locationManager.startMonitoringForRegion(region)
         }
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startMonitoringSignificantLocationChanges()
     }
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         let recentLocation = locationManager.location
-        var berlin = CLLocation(latitude: 52.523333, longitude: 13.411389)
-        var helsinki = CLLocation(latitude: 60.170833, longitude: 24.9375)
-        var london = CLLocation(latitude: 51.507222, longitude: 0.1275)
-        if (recentLocation.distanceFromLocation(berlin) <= 250000) {
-            println("in berlin")
-        } else if (recentLocation.distanceFromLocation(helsinki) <= 105000) {
-            println("in helsinki")
-        } else if (recentLocation.distanceFromLocation(london) <= 750000) {
-            println("in london")
+        var cities = fetchAllCities()
+        
+        var closestCity = "Helsinki"
+        var cityRange: Double?
+        for (city) in cities {
+            var cityLoc = CLLocation(latitude: city.latitude.doubleValue, longitude: city.longitude.doubleValue)
+            var curRange = recentLocation.distanceFromLocation(cityLoc)
+            if (cityRange == nil || curRange < cityRange) {
+                cityRange = curRange
+                closestCity = city.name
+            }
         }
-        println(recentLocation)
+        currentCity = closestCity
+        println("in " + currentCity)
+        // Change the regions now.
+        
+        
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {

@@ -1,0 +1,22 @@
+[
+ {
+    "Name": "Helsinki",
+    "Latitude": "52.523333",
+    "Longitude": "13.411389"
+ },
+ {
+    "Name": "Espoo",
+    "Latitude": "60.205556",
+    "Longitude": "24.655556"
+ },
+ {
+    "Name": "Berlin",
+    "Latitude": "60.170833",
+    "Longitude": "24.9375"
+ },
+ {
+    "Name": "London",
+    "Latitude": "51.507222",
+    "Longitude": "0.1275"
+ }
+]

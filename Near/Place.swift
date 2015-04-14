@@ -13,6 +13,7 @@ import CoreLocation
 class Place: NSManagedObject {
 
     @NSManaged var name: String
+    @NSManaged var city: String
     @NSManaged var descriptionText: String
     @NSManaged var category: String
     @NSManaged var radius: Double
@@ -20,14 +21,12 @@ class Place: NSManagedObject {
     @NSManaged var longitude: Double
     @NSManaged var visited: Bool
     @NSManaged var lastVisit: NSDate
-    @NSManaged var city: String
 
     func getVisitRadius() -> Double {
         return radius * 0.5
     }
     
     func isWithinVisitThreshold(location: CLLocation) -> Bool {
-     
         return location.distanceFromLocation(CLLocation(latitude: latitude, longitude: longitude)) < getVisitRadius()
     }
 
