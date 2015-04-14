@@ -12,6 +12,7 @@ import CoreData
 class Place: NSManagedObject {
 
     @NSManaged var name: String
+    @NSManaged var city: String
     @NSManaged var descriptionText: String
     @NSManaged var category: String
     @NSManaged var radius: NSNumber
