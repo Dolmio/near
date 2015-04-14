@@ -5,7 +5,7 @@ import CoreData
 
 class PlaceController: NSObject, CLLocationManagerDelegate {
 
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     var locationManager = CLLocationManager()
 
@@ -18,32 +18,32 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         let path = NSBundle.mainBundle().pathForResource("sample-places-helsinki", ofType: "json")
         let bundle = NSBundle.mainBundle();
         let placeInfoJSONString = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)!
-        let jsonArray = NSJSONSerialization.JSONObjectWithData(placeInfoJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, options: NSJSONReadingOptions.MutableContainers, error: nil) as [NSDictionary]
+        let jsonArray = NSJSONSerialization.JSONObjectWithData(placeInfoJSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [NSDictionary]
         
         return jsonArray.map(savePlaceFromObject).filter{ $0 != nil }.map{ $0! }
     }
 
     func savePlaceFromObject(placeJson: AnyObject) -> Place?{
-        var longitudeStr: NSString?
-        var latitudeStr: NSString?
+        var longitude: Double?
+        var latitude: Double?
         if let coordinates = placeJson["Coordinates"] as? NSString {
             let separatedCoords = coordinates.componentsSeparatedByString(", ")
-            latitudeStr = separatedCoords.first as? NSString
-            longitudeStr = separatedCoords.count > 1 ? (separatedCoords[1] as NSString) : nil
+            latitude = (separatedCoords.first as? NSString)?.doubleValue
+            longitude = separatedCoords.count > 1 ? (separatedCoords[1] as? NSString)?.doubleValue : nil
         }
-        let name = placeJson["Title"] as? NSString
-        let category = placeJson["Category"] as? NSString
-        let description = placeJson["Discription"] as? NSString
-        let radius = placeJson["Radius"] as? NSString
-        let city = placeJson["City"] as? NSString
-        switch (name, category, description, radius, longitudeStr, latitudeStr, city) {
+        let name = placeJson["Title"] as? String
+        let category = placeJson["Category"] as? String
+        let description = placeJson["Discription"] as? String
+        let radius = (placeJson["Radius"] as? NSString)?.doubleValue
+        let city = placeJson["City"] as? String
+        switch (name, category, description, radius, longitude, latitude, city) {
         case (.Some(_), .Some(_), .Some(_), .Some(_), .Some(_), .Some(_), .Some(_)):
-            let newPlace = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: appDelegate.managedObjectContext!) as Place
+            let newPlace = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: appDelegate.managedObjectContext!) as! Place
             newPlace.name = name!
             newPlace.category = category!
-            newPlace.longitude = longitudeStr!.doubleValue
-            newPlace.latitude = latitudeStr!.doubleValue
-            newPlace.radius = radius!.doubleValue
+            newPlace.longitude = latitude!
+            newPlace.latitude = longitude!
+            newPlace.radius = radius!
             newPlace.descriptionText = description!
             newPlace.city = city!
             appDelegate.saveContext()

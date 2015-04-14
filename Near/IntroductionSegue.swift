@@ -2,8 +2,8 @@ import UIKit
 
 class IntroductionSegue: UIStoryboardSegue {
     override func perform() {
-        var source = self.sourceViewController as UIViewController
-        var destination = self.destinationViewController as UIViewController
+        var source = self.sourceViewController as! UIViewController
+        var destination = self.destinationViewController as! UIViewController
 
         let transition = CATransition()
         transition.duration = 0.25

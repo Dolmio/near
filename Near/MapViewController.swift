@@ -9,10 +9,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var placeTitle: UILabel!
     @IBOutlet weak var placeDescription: UILabel!
     let locationManager = CLLocationManager()
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
-    let userLocationArrowView : MKAnnotationView!
-    let placeIconView : MKAnnotationView!
+    var userLocationArrowView : MKAnnotationView!
+    var placeIconView : MKAnnotationView!
     var currentPlace : Place?
 
     required init(coder aDecoder: NSCoder) {
@@ -64,7 +64,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapElement.setRegion(mapElement.regionThatFits(mapRegionToShow), animated: true)
 
         let placeAnnotation = MKPointAnnotation()
-        placeAnnotation.setCoordinate(placeLocation)
+        placeAnnotation.coordinate = placeLocation
         placeAnnotation.title = "place"
         mapElement.addAnnotation(placeAnnotation)
 
@@ -92,16 +92,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     func resetPlaces() {
         if let annotations = mapElement.annotations {
-            for(annotation : MKAnnotation) in annotations as [MKAnnotation]{
+            for(annotation : MKAnnotation) in annotations as! [MKAnnotation]{
                 if(annotation.title == "place") {
                     mapElement.removeAnnotation(annotation)
                 }
             }
         }
 
-        if let overlays = mapElement.overlays? {
-            for(overlay: MKOverlay) in overlays as [MKOverlay] {
-                if(overlay is PlaceCircle) {
+        if let overlays = mapElement.overlays as? [MKOverlay] {
+            for overlay in overlays {
+                if (overlay is PlaceCircle) {
                     mapElement.removeOverlay(overlay)
                 }
             }
