@@ -103,7 +103,6 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
     
     func fetchPlacesWithinCity(city: String) -> [Place] {
         let fetchRequest = NSFetchRequest(entityName: "Place")
-        fetchRequest.fetchLimit = 1
         let predicate = NSPredicate(format: "city == %@", city)
         fetchRequest.predicate = predicate
         var maybeError: NSError?
@@ -162,7 +161,7 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
             return fetchResults
         }
         else if let error = maybeError{
-            println("Error fetching visted places: \(error.localizedDescription)")
+            println("Error fetching cities: \(error.localizedDescription)")
             return []
         }else{
             return []
@@ -172,22 +171,12 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
     func setupPlacesAndRegions() {
         let places = readAndPersistPlaces()
         let cities = readAndPersistCities()
-        let regionsToMonitor = places.map({(place) -> CLRegion in
-            let coords = CLLocationCoordinate2D(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue)
-            let region = CLCircularRegion(center:coords, radius: place.radius.doubleValue, identifier: place.name)
-            region.notifyOnEntry = true
-            region.notifyOnExit = false
-            return region
-        })
-        for region in regionsToMonitor {
-            locationManager.startMonitoringForRegion(region)
-        }
-        //FIXME: this is for testing purposes, should use significant changes.
-        locationManager.startUpdatingLocation()
+        checkCurrentCity()
     }
     
-    func changeRegions() {
-        let places = fetchPlacesWithinCity(currentCity)
+    func changeRegions(cityName: String) {
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        let places = fetchPlacesWithinCity(cityName)
         let regionsToMonitor = places.map({(place) -> CLRegion in
             let coords = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
             let region = CLCircularRegion(center:coords, radius: place.radius, identifier: place.name)
@@ -196,30 +185,30 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
             return region
         })
         for region in regionsToMonitor {
-            println("Added region: " + region.identifier)
+            println("Added region \(region.identifier)")
             locationManager.startMonitoringForRegion(region)
         }
     }
+    
+    func checkCurrentCity() {
+        var cities = fetchAllCities()
+        var recentLocation = locationManager.location
+        if (recentLocation == nil) {
+            recentLocation = CLLocation(latitude: 60.170833, longitude: 24.9375)
+        }
+        
+        cities.sort {
+            let city1Loc = CLLocation(latitude: $0.latitude.doubleValue, longitude: $0.longitude.doubleValue)
+            let city2Loc = CLLocation(latitude: $1.latitude.doubleValue, longitude: $1.longitude.doubleValue)
+            let city1Dist = recentLocation.distanceFromLocation(city1Loc)
+            let city2Dist = recentLocation.distanceFromLocation(city2Loc)
+            return city1Dist < city2Dist
+        }
+        changeRegions(cities[0].name)
+    }
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        let recentLocation = locationManager.location
-        var cities = fetchAllCities()
-        
-        var closestCity = "Helsinki"
-        var cityRange: Double?
-        for (city) in cities {
-            var cityLoc = CLLocation(latitude: city.latitude.doubleValue, longitude: city.longitude.doubleValue)
-            var curRange = recentLocation.distanceFromLocation(cityLoc)
-            if (cityRange == nil || curRange < cityRange) {
-                cityRange = curRange
-                closestCity = city.name
-            }
-        }
-        currentCity = closestCity
-        println("in " + currentCity)
-        // Change the regions now.
-        
-        
+        checkCurrentCity()
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
