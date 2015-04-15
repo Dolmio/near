@@ -35,8 +35,8 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
             let newPlace = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: appDelegate.managedObjectContext!) as! Place
             newPlace.name = name
             newPlace.category = category
-            newPlace.longitude = latitude
-            newPlace.latitude = longitude
+            newPlace.longitude = longitude
+            newPlace.latitude = latitude
             newPlace.radius = radius
             newPlace.descriptionText = description
             newPlace.city = city
