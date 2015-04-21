@@ -63,20 +63,23 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         let predicate = NSPredicate(format: "name == %@", name)
         fetchRequest.predicate = predicate
         if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Place] {
-            return fetchResults[0]
+            if fetchResults.count > 0 {
+                return fetchResults[0]
+            }
         }
-        else{
-            return nil
-        }
+        return nil
+    }
+
+    static func visitedPlacesRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "Place")
+        fetchRequest.predicate = NSPredicate(format: "visited == %@", true)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastVisit", ascending: false), NSSortDescriptor(key: "name", ascending: true)]
+        return fetchRequest
     }
 
     func fetchVisitedPlaces() -> [Place] {
-        let fetchRequest = NSFetchRequest(entityName: "Place")
-        let predicate = NSPredicate(format: "visited == %@", true)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastVisit", ascending: false), NSSortDescriptor(key: "name", ascending: true)]
-        fetchRequest.predicate = predicate
         var maybeError: NSError?
-        if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(fetchRequest, error: &maybeError) as? [Place] {
+        if let fetchResults = appDelegate.managedObjectContext!.executeFetchRequest(PlaceController.visitedPlacesRequest(), error: &maybeError) as? [Place] {
             return fetchResults
         }
         else if let error = maybeError{
@@ -105,8 +108,8 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
     func setupPlacesAndRegions() {
         let places = readAndPersistPlaces()
         let regionsToMonitor = places.map({(place) -> CLRegion in
-            let coords = CLLocationCoordinate2D(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue)
-            let region = CLCircularRegion(center:coords, radius: place.radius.doubleValue, identifier: place.name)
+            let coords = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+            let region = CLCircularRegion(center:coords, radius: place.radius, identifier: place.name)
             region.notifyOnEntry = true
             region.notifyOnExit = false
             return region
@@ -120,9 +123,8 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         let recentLocation = locationManager.location
         let locationAccuracyThreshold = 100.0
         if(recentLocation.horizontalAccuracy <= locationAccuracyThreshold) {
-            let placeController = PlaceController()
-            if let place = placeController.fetchPlaceWithName(region.identifier){
-                placeController.scheduleNotificationForPlace(place)
+            if let place = fetchPlaceWithName(region.identifier){
+                scheduleNotificationForPlace(place)
             }
         }
     }

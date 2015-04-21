@@ -3,7 +3,7 @@ import MapKit
 import CoreLocation
 import Darwin
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIApplicationDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIApplicationDelegate {
 
     @IBOutlet weak var mapElement: MKMapView!
     @IBOutlet weak var placeTitle: UILabel!
@@ -17,8 +17,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        locationManager.delegate = self
         let mapIconWidth = 32
-        let  mapIconHeight = 40
+        let mapIconHeight = 40
         userLocationArrowView = annotationViewWithImage("icon_map_arrow.png", width: mapIconWidth, height: mapIconHeight)
         placeIconView = annotationViewWithImage("icon_map.png", width: mapIconWidth, height: mapIconHeight)
     }
@@ -41,17 +42,46 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    var placeFromNotification: Place?
     func refreshViewWithPlaceFromNotification(notification:NSNotification) {
         if let userInfo = (notification.userInfo as? Dictionary<String,String>) {
             if let name = userInfo["name"] {
-                if let place = PlaceController().fetchPlaceWithName(name){
-                    place.visited = true
-                    place.lastVisit = NSDate()
-                    appDelegate.saveContext()
+                if let place = PlaceController().fetchPlaceWithName(name) {
+                    placeFromNotification = place
+                    if place.isWithinVisitThreshold(locationManager.location) {
+                        visitPlace(place)
+                    } else {
+                        let coords = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+                        let region = CLCircularRegion(center:coords, radius: place.getVisitRadius(), identifier: "visit")
+                        region.notifyOnEntry = true
+                        region.notifyOnExit = false
+                        locationManager.startMonitoringForRegion(region)
+                    }
                     updateMapView(place)
                 }
             }
+        }
+    }
+
+    func visitPlace(place: Place) {
+        place.visited = true
+        place.lastVisit = NSDate()
+        appDelegate.saveContext()
+    }
+
+    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
+        println(region.identifier)
+        if region.identifier == "visit" {
+            let recentLocation = locationManager.location
+            let locationAccuracyThreshold = 100.0
+            if (recentLocation.horizontalAccuracy <= locationAccuracyThreshold) {
+                if let place = placeFromNotification {
+                    visitPlace(placeFromNotification!)
+                }
+                println("visited place")
+            }
+            locationManager.stopMonitoringForRegion(region)
         }
     }
 
@@ -59,8 +89,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         placeTitle.text = place.name
         placeDescription.text = place.descriptionText
         resetPlaces();
-        let placeLocation = CLLocationCoordinate2D(latitude: place.latitude.doubleValue, longitude: place.longitude.doubleValue);
-        let mapRegionToShow = calculateMapRegionToShow(placeLocation, possibleUserLocation: locationManager.location, placeRadius: place.radius.doubleValue)
+        let placeLocation = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude);
+        let mapRegionToShow = calculateMapRegionToShow(placeLocation, possibleUserLocation: locationManager.location, placeRadius: place.radius)
         mapElement.setRegion(mapElement.regionThatFits(mapRegionToShow), animated: true)
 
         let placeAnnotation = MKPointAnnotation()
@@ -68,7 +98,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         placeAnnotation.title = "place"
         mapElement.addAnnotation(placeAnnotation)
 
-        let placeCircle = PlaceCircle(centerCoordinate: placeLocation, radius: place.radius.doubleValue)
+        let placeCircle = PlaceCircle(centerCoordinate: placeLocation, radius: place.radius)
         mapElement.addOverlay(placeCircle)
 
         if let userLocation = locationManager.location {
