@@ -54,7 +54,7 @@ class HistoryTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellReuseIdentifier, forIndexPath: indexPath) as HistoryTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellReuseIdentifier, forIndexPath: indexPath) as! HistoryTableViewCell
         let place = visitedPlaces[indexPath.row]
         cell.place = place
         cell.tweakSizeAccordingToTable(tableView)
@@ -63,7 +63,7 @@ class HistoryTableViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "toMapSegue") {
-            let mapViewController = segue.destinationViewController as MapViewController
+            let mapViewController = segue.destinationViewController as! MapViewController
             if let indexPath = self.tableView.indexPathForSelectedRow(){
                       mapViewController.currentPlace = visitedPlaces[indexPath.row]
             }
