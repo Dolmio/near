@@ -173,7 +173,9 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
     }
     
     func changeRegions(cityName: String) {
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        for region in locationManager.monitoredRegions as! Set<CLRegion> {
+            locationManager.stopMonitoringForRegion(region)
+        }
         let places = fetchPlacesWithinCity(cityName)
         let regionsToMonitor = places.map({(place) -> CLRegion in
             let coords = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
