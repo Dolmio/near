@@ -171,7 +171,7 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
     func setupPlacesAndRegions() {
         let places = readAndPersistPlaces()
         let cities = readAndPersistCities()
-        checkCurrentCity()
+        changeMonitoredRegionsToNearestCity()
     }
     
     func changeRegions(cityName: String) {
@@ -190,10 +190,11 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func checkCurrentCity() {
+    func changeMonitoredRegionsToNearestCity() {
         var cities = fetchAllCities()
         var recentLocation = locationManager.location
         if (recentLocation == nil) {
+            //Set up Helsinki as the default location
             recentLocation = CLLocation(latitude: 60.170833, longitude: 24.9375)
         }
         
@@ -208,7 +209,7 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
     }
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        checkCurrentCity()
+        changeMonitoredRegionsToNearestCity()
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
