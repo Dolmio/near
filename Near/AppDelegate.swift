@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             placeController!.setupPlacesAndRegions()
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
         }
+        placeController?.locationManager.startMonitoringSignificantLocationChanges()
         return true
     }
 
