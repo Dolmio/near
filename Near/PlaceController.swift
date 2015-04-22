@@ -9,8 +9,6 @@ class PlaceController: NSObject, CLLocationManagerDelegate {
 
     var locationManager = CLLocationManager()
 
-    var currentCity = "Helsinki"
-
     override init() {
         super.init()
         locationManager.delegate = self
