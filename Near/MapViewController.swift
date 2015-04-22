@@ -9,7 +9,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var placeTitle: UILabel!
     @IBOutlet weak var placeDescription: UILabel!
     let locationManager = CLLocationManager()
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     let userLocationArrowView : MKAnnotationView!
     let placeIconView : MKAnnotationView!

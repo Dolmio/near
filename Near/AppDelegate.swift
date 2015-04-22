@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             placeController!.setupPlacesAndRegions()
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
         }
-        //FIXME: this is for testing purposes, should use significant changes.
         placeController?.locationManager.startMonitoringSignificantLocationChanges()
         return true
     }
@@ -62,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         println("Received local notification when application state was: \(getApplicationStateString(application.applicationState))");
         if(application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background){
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let mapViewController = storyBoard.instantiateViewControllerWithIdentifier("mapView") as MapViewController
+            let mapViewController = storyBoard.instantiateViewControllerWithIdentifier("mapView") as! MapViewController
             window?.rootViewController = mapViewController
             NSNotificationCenter.defaultCenter().postNotificationName("refreshMapView", object: nil, userInfo: notification.userInfo);
         }
@@ -82,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
         }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -105,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "fi.near", code: 9999, userInfo: dict)
+            error = NSError(domain: "fi.near", code: 9999, userInfo: dict as [NSObject : AnyObject])
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")
